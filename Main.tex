@@ -1,0 +1,377 @@
+\documentclass[a4paper,11pt,twoside]{book}%{mwbk}
+
+\usepackage[inner=4.2cm,outer=3.0cm,top=1.5in,bottom=1.75in]{geometry}
+%\usepackage[utf8]{inputenc} %kodowanie znakw
+
+
+\usepackage{graphicx}
+%\usepackage{ucs} % TODO: co to?
+\usepackage{amsmath,amssymb} %do wzorw matematycznych
+\usepackage{amsfonts} %---------||--------------
+\usepackage{eufrak} % TODO: co to?
+
+
+\usepackage{multirow}
+\usepackage{tikz}
+\usepackage{subfigure}
+\usepackage{gensymb}
+\usepackage{rotating}
+
+
+\usepackage{color}% Include colors for document elements
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+% \usepackage[numbers,super,comma,sort&compress]{natbib}
+
+ \usepackage[style=alphabetic]{biblatex}
+ 
+ \begin{filecontents*}{refs.bib}
+ 
+ @article{periole2012structural,
+  title={Structural determinants of the supramolecular organization of G protein-coupled receptors in bilayers},
+  author={Periole, Xavier and Knepp, Adam M and Sakmar, Thomas P and Marrink, Siewert J and Huber, Thomas},
+  journal={Journal of the American Chemical Society},
+  volume={134},
+  number={26},
+  pages={10959--10965},
+  year={2012},
+  publisher={ACS Publications}
+}
+
+@article{torrie1977nonphysical,
+  title={Nonphysical sampling distributions in Monte Carlo free-energy estimation: Umbrella sampling},
+  author={Torrie, Glenn M and Valleau, John P},
+  journal={Journal of Computational Physics},
+  volume={23},
+  number={2},
+  pages={187--199},
+  year={1977},
+  publisher={Elsevier}
+}
+
+@article{kirkwood1935statistical,
+  title={Statistical mechanics of fluid mixtures},
+  author={Kirkwood, John G},
+  journal={The Journal of Chemical Physics},
+  volume={3},
+  number={5},
+  pages={300--313},
+  year={1935},
+  publisher={AIP Publishing}
+}
+
+@article{arnautova2011development,
+  title={Development of a new physics-based internal coordinate mechanics force field and its application to protein loop modeling},
+  author={Arnautova, Yelena A. and Abagyan, Ruben A. and Totrov, Maxim},
+  journal={Proteins: Structure, Function, and Bioinformatics},
+  volume={79},
+  number={2},
+  pages={477--498},
+  year={2011},
+  publisher={Wiley Online Library}
+}
+
+@article{dill1997additivity,
+  title={Additivity principles in biochemistry},
+  author={Dill, Ken A},
+  journal={Journal of Biological Chemistry},
+  volume={272},
+  number={2},
+  pages={701--704},
+  year={1997},
+  publisher={ASBMB}
+}
+
+@article{brady1995decomposition,
+  title={Decomposition of interaction free energies in proteins and other complex systems},
+  author={Brady, G Patrick and Sharp, Kim A},
+  journal={Journal of molecular biology},
+  volume={254},
+  number={1},
+  pages={77--85},
+  year={1995},
+  publisher={Elsevier}
+}
+
+@article{boresch1995meaning,
+  title={The meaning of component analysis: decomposition of the free energy in terms of specific interactions},
+  author={Boresch, Stefan and Karplus, Martin},
+  journal={Journal of molecular biology},
+  volume={254},
+  number={5},
+  pages={801--807},
+  year={1995},
+  publisher={Elsevier}
+}
+
+
+@article{bao2009protein,
+  title={Protein mechanics: a new frontier in biomechanics},
+  author={Bao, G},
+  journal={Experimental mechanics},
+  volume={49},
+  number={1},
+  pages={153--164},
+  year={2009},
+  publisher={Springer}
+}
+
+@article{lavery2007protein,
+  title={Protein mechanics: a route from structure to function},
+  author={Lavery, Richard and Sacquin-Mora, Sophie},
+  journal={Journal of biosciences},
+  volume={32},
+  number={1},
+  pages={891--898},
+  year={2007},
+  publisher={Springer}
+}
+
+@article{sacquin2014motions,
+  title={Motions and mechanics: investigating conformational transitions in multi-domain proteins with coarse-grain simulations},
+  author={Sacquin-Mora, Sophie},
+  journal={Molecular Simulation},
+  volume={40},
+  number={1-3},
+  pages={229--236},
+  year={2014},
+  publisher={Taylor \& Francis}
+}
+
+@article{chiang2013molecular,
+  title={Molecular mechanics and dynamics characterization of an in silico mutated protein: A stand-alone lab module or support activity for in vivo and in vitro analyses of targeted proteins},
+  author={Chiang, Harry and Robinson, Lucy C and Brame, Cynthia J and Messina, Troy C},
+  journal={Biochemistry and Molecular Biology Education},
+  volume={41},
+  number={6},
+  pages={402--408},
+  year={2013},
+  publisher={Wiley Online Library}
+}
+
+@article{van1997engineering,
+  title={Engineering protein mechanics: inhibition of concerted motions of the cellular retinol binding protein by site-directed mutagenesis.},
+  author={van Aalten, DM and Jones, PC and De Sousa, M and Findlay, JB},
+  journal={Protein engineering},
+  volume={10},
+  number={1},
+  pages={31--37},
+  year={1997},
+  publisher={Oxford Univ Press}
+}
+
+@article{chipot2014frontiers,
+  title={Frontiers in free-energy calculations of biological systems},
+  author={Chipot, Christophe},
+  journal={Wiley Interdisciplinary Reviews: Computational Molecular Science},
+  volume={4},
+  number={1},
+  pages={71--89},
+  year={2014},
+  publisher={Wiley Online Library}
+}
+
+@article{comer2014adaptive,
+  title={The Adaptive Biasing Force Method: Everything You Always Wanted To Know but Were Afraid To Ask},
+  author={Comer, Jeffrey and Gumbart, James C and H{\'e}nin, J{\'e}r{\^o}me and Lelievre, Tony and Pohorille, Andrew and Chipot, Christophe},
+  journal={The Journal of Physical Chemistry B},
+  year={2014},
+  publisher={ACS Publications}
+}
+
+@article{gumbart2012standard,
+  title={Standard binding free energies from computer simulations: What is the best strategy?},
+  author={Gumbart, James C and Roux, Beno{\^\i}t and Chipot, Christophe},
+  journal={Journal of chemical theory and computation},
+  volume={9},
+  number={1},
+  pages={794--802},
+  year={2012},
+  publisher={ACS Publications}
+}
+
+
+@article{carter1989constrained,
+  title={Constrained reaction coordinate dynamics for the simulation of rare events},
+  author={Carter, EA and Ciccotti, Giovanni and Hynes, James T and Kapral, Raymond},
+  journal={Chemical Physics Letters},
+  volume={156},
+  number={5},
+  pages={472--477},
+  year={1989},
+  publisher={Elsevier}
+}
+
+@article{woo2005calculation,
+  title={Calculation of absolute protein--ligand binding free energy from computer simulations},
+  author={Woo, Hyung-June and Roux, Beno{\^\i}t},
+  journal={Proceedings of the national academy of sciences of the united states of america},
+  volume={102},
+  number={19},
+  pages={6825--6830},
+  year={2005},
+  publisher={National Acad Sciences}
+}
+
+@article{seifert2013protein,
+  title={Protein mechanics: How force regulates molecular function},
+  author={Seifert, Christian and Gr{\"a}ter, Frauke},
+  journal={Biochimica et Biophysica Acta (BBA)-General Subjects},
+  volume={1830},
+  number={10},
+  pages={4762--4768},
+  year={2013},
+  publisher={Elsevier}
+}
+
+@article{den2013revisiting,
+  title={Revisiting the Exact Relation between Potential of Mean Force and Free-Energy Profile},
+  author={den Otter, Wouter K},
+  journal={Journal of Chemical Theory and Computation},
+  volume={9},
+  number={9},
+  pages={3861--3865},
+  year={2013},
+  publisher={ACS Publications}
+}
+
+@article{sugita2000multidimensional,
+  title={Multidimensional replica-exchange method for free-energy calculations},
+  author={Sugita, Yuji and Kitao, Akio and Okamoto, Yuko},
+  journal={The Journal of Chemical Physics},
+  volume={113},
+  number={15},
+  pages={6042--6051},
+  year={2000},
+  publisher={AIP Publishing}
+}
+
+@book{press2007numerical,
+  title={Numerical recipes 3rd edition: The art of scientific computing},
+  author={Press, William H},
+  year={2007},
+  publisher={Cambridge university press}
+}
+
+
+@book{chipot2007free,
+  title={Free energy calculations: theory and applications in chemistry and biology},
+  author={Chipot, Christophe and Pohorille, Andrew},
+  volume={86},
+  year={2007},
+  publisher={Springer}
+}
+
+@article{olboyle2011open,
+  title={Open Babel: An open chemical toolbox},
+  author={O'Boyle, Noel M and Banck, Michael and James, Craig A and Morley, Chris and Vandermeersch, Tim and Hutchison, Geoffrey R},
+  journal={J Cheminf},
+  volume={3},
+  pages={33},
+  year={2011}
+}
+
+@article{eastman2010openmm,
+  title={OpenMM: A hardware-independent framework for molecular simulations},
+  author={Eastman, Peter and Pande, Vijay},
+  journal={Computing in Science \& Engineering},
+  volume={12},
+  number={4},
+  pages={34--39},
+  year={2010},
+  publisher={AIP Publishing}
+}
+
+
+@article{frey2007clustering,
+  title={Clustering by passing messages between data points},
+  author={Frey, Brendan J and Dueck, Delbert},
+  journal={science},
+  volume={315},
+  number={5814},
+  pages={972--976},
+  year={2007},
+  publisher={American Association for the Advancement of Science}
+}
+
+@article{efron1979bootstrap,
+  title={Bootstrap methods: another look at the jackknife},
+  author={Efron, Bradley},
+  journal={The annals of Statistics},
+  pages={1--26},
+  year={1979},
+  publisher={JSTOR}
+}
+
+@article{carlstein1986use,
+  title={The use of subseries values for estimating the variance of a general statistic from a stationary sequence},
+  author={Carlstein, Edward},
+  journal={The Annals of Statistics},
+  pages={1171--1179},
+  year={1986},
+  publisher={JSTOR}
+}
+
+@book{cole1998clustering,
+  title={Clustering with genetic algorithms},
+  author={Cole, Rowena Marie},
+  year={1998},
+  publisher={Citeseer}
+}
+  
+
+@article{hall1995blocking,
+  title={On blocking rules for the bootstrap with dependent data},
+  author={Hall, Peter and Horowitz, Joel L and Jing, Bing-Yi},
+  journal={Biometrika},
+  volume={82},
+  number={3},
+  pages={561--574},
+  year={1995},
+  publisher={Biometrika Trust}
+}
+
+@article{kreiss2011bootstrap,
+  title={Bootstrap methods for dependent data: A review},
+  author={Kreiss, Jens-Peter and Paparoditis, Efstathios},
+  journal={Journal of the Korean Statistical Society},
+  volume={40},
+  number={4},
+  pages={357--378},
+  year={2011},
+  publisher={Elsevier}
+}
+
+\end{filecontents*}{references.bib}
+ 
+ \addbibresource{refs.bib}
+
+
+
+
+\begin{document} 
+\baselineskip=4ex %ustawia odstep miedzy wierszami
+\include{Title}
+~								%aby wstawic pusta strone
+%\include{oswiadczenie}
+~								%aby wstawic pusta strone
+%\include{abstrakt}
+\pagestyle{headings}
+%\include{spisy}
+% \include{Wstep}
+% \include{ChapterII}
+\begin{refsection}
+\include{ChapterIII}
+\printbibliography
+\end{refsection}
+% \include{Ocena}
+% \include{Wlasciwosci}
+% \include{Obliczenia}
+% \include{Podsumowanie}
+% \include{appendix}
+
+
+%\include{refs}
+%\bibliography{refs}
+
+\end{document}
