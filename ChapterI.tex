@@ -1,0 +1,41 @@
+% Co musi byc w Intro:
+% 1. Paragraf o MD + losowosc + collective variable.
+% 4. Ze dwa slowa o klasycznym polu silowym i wkladach.
+% 2. Ze wynik eksperymentu jest próbą statystyczną z pewnego rozkladu.
+% 3.  Machine learning / Statistical learning method.
+%  -> unsuppervised
+%  -> suppervised
+%  Ze unsuppervised==clustering==finding patterns in seemingly chaotic
+% 5. Jakis ustep (ktory wychodzi z klasteringu) n.t. dynamicznych domen.
+
+% Co (byc moze) powinno byc:
+% 1. Metody optymalizacji poprzez alg. genetyczne.
+% 2. Energia swobodna.
+
+\chapter{Introduction}
+
+The primary aim of this dissertation was the extraction of palpable observations from complex data describing (bio)molecular systems.
+In Chapter II we present our original method of discovering quasi-rigid parts in proteins, which relies on experimental data, or from a molecular dynamics trajectory.
+Chapter III presents a very different problem of identifying parts of a molecular system that propel (or hinder) a given structural transition.
+In both these cases we applied unsuppervised machine learning techniques (also known as clustering), which is commonly used in finding patterns in seemingly chaotic data.
+
+In this introductory chapter we give an overview of the molecular dynamics simulation scheme and the machine learning methodology.
+The discussion here is broad, and was intended to motivate the application of clustering techniques described in the remainder of the dissertation. % TODO: inaczej
+We go into more details concerning particular molecular dynamics and machine learning algorithms in Chapters II and III.
+
+
+\section{Molecular Dynamics}
+
+Molecular dynamics (MD) simulations are a wide range of numerical methods designed for the study of molecular systems.
+Typically, the MD approach assumes a classical potential energy function, which treats atoms as electrostatically charged points, and chemical bonds as springs and hinges.
+More accurate algorithms take into account quantum effects, making the simulation more reliable, but also immensely expensive in terms of computational costs.
+Although modelling intricate properties of molecular systems may seem an over-simplification, MD schemes have achieved considerable success over the recent years, and are constantly improving.
+
+Classical MD simulations are so popular mainly because of their significantly lower computational cost.
+Primarily, this allows for studying large, biologically relevant systems, such as enzymes, DNA, membrane channels, and many other biomolecules.
+Secondly, the lower computational cost enables calculations of the free energy profile of the transitions associated with the function of a molecule.
+
+
+The second point is especially important, because all algorithms designed for sampling the configurational space in the classical MD set-up are naturally transferable to quantum-based methods.
+
+Underlying the simplistic, classical description of MD simulations are complex sampling techniques used for estimating macroscopic properties of microscopic systems.
