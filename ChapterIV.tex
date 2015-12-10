@@ -1,0 +1,49 @@
+\chapter{Conclusions}
+
+In this closing chapter we re-iterate the most important findings of the methods presented in Chapters~II and~III, and propose several refinements to them.
+
+\section{Dynamic domains}
+
+ResiCon was built upon several ideas, some of which were essential for its high-quality results.
+The first one made use of the concept of a \emph{contact} between residues (that had been proven to be advantageous in an earlier application) to define the \emph{geometrical variability}.
+Thereupon, the second idea was to propose a specific \emph{spectral clustering} algorithm, whose output were clusters corresponding to dynamic domains of a given protein structure.
+In its current implementation, ResiCon requires information about all pairs of configurations to calculate the geometrical variability. 
+
+To analyze MD simulations, ResiCon made use of the Principal Components Analysis (PCA) to select representative configurations. % to reduce the computational complexity of the algorithm constructing the similarity matrix.
+Applying PCA was necessary, because otherwise each pairs of configurations in the trajectory would have to be tracked for the similarity matrix to be constructed.
+%The number of configurations in \emph{any} simulation is too great to allow such a straightforward approach to be feasible.
+However, the PCA relies on linearity assumptions, which in case of structural transitions of biomolecular systems may seem overly optimistic.
+It is possible to amend this obstacle by employing a non-linear algorithm (e.g., NLPCA, which stands for \emph{Non-Linear PCA}), but at prohibitively high computational cost.
+
+%In order to truly adapt ResiCon to the MD trajectory set-up, one needs to amend the problem of analyzing each pair of configurations.
+In practice, only a few pairs contribute (or, more accurately: \emph{could} have contributed) to the similarity matrix.
+It would certainly be worthwhile to test a sub-procedure that might substitute PCA by finding relevant pairs of configurations.
+In particular, the Locality-Sensitive Hashing (LSH) algorithm offers this kind of functionality.
+
+\section{Molecular cogs}
+
+The fundamental assumption of the molecular cogs methodology presented in Chapter~III was that there are two, \emph{distinct} groups of atoms, cooperating to propel the system forward (or backward) along a given collective variable.
+However, we concluded that the clustering procedure has its limitations in cases in which the molecular system \emph{as a whole} has a general propensity to move in a certain direction.
+In such cases, the more valuable insight would be the knowledge about which group of atoms plays the dominant role in such an effect.
+
+Instead of using the definitive approach of clustering, one might consider employing a more a general idea in which each element can be a member of a more than just one group.
+\emph{Community detection} offers such functionality, but also allows for the identification of hierarchical structures.
+With the help from a community detection algorithm, we could, for example, search for groups of atoms with different degrees of contribution to the system's tendency to make a transition.
+
+From a different stand point, the method presented in Chapter~III employed constrained molecular dynamics (cMD) to estimate local changes in the Helmholtz free energy.
+However, as we noticed in Chapter~III, the cMD has limitations, which would render it ineffective for large systems.
+An alternative sampling technique~--~most notably: the Adaptive Biasing Force (ABF) method~--~could remedy this impediment, but at the cost of a more complicated and time-demanding implementation.
+We left the ABF-driven improvement for a future molecular cogs identification scheme.
+
+The ABF sub-procedure would also alleviate the problem of estimating entropic contributions of the molecular cogs.
+Nevertheless, we are not yet certain how the entropic contribution matrix should be partitioned.
+We need to re-evaluate the meaning of molecular cogs altogether, and decide on a strategy that would treat entropic and energetic contributions on an equal footing.
+
+The molecular cogs setting in its current formulation suggests a more subtle analysis of the causality hidden in complex molecular transformations.
+We noticed that by modeling the contributions to the PMF we are close to modeling the kinetics of a transition, as well.
+That is, we can modify our approach to identify contributions of a given subsystem to the so-called \emph{reaction rate constant}.
+For that, we would need to equip our analytical toolbox with yet another method called the Markov State Models (MSM).
+Proposed by Frank Noe, the MSM extracts kinetic properties of a system from the PMF.
+It was proven to give reliable estimates of the reaction rate constant for small enzymes, and seems to be an interesting future improvement to our molecular cogs methodology.
+
+\section{Final comments}

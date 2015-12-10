@@ -7,109 +7,133 @@
 %  Ze unsuppervised==clustering==finding patterns in seemingly chaotic
 % 5. Jakis ustep (ktory wychodzi z klasteringu) n.t. dynamicznych domen.
 
-% Co (byc moze) powinno byc:
-% 1. Metody optymalizacji poprzez alg. genetyczne.
-% 2. Energia swobodna.
 
 \chapter{Introduction}
 
-The primary aim of this dissertation was the extraction of palpable observations from complex data describing (bio)molecular systems.
-In Chapter II we present our novel method of discovering quasi-rigid parts in proteins, which relies on experimental data, or from a molecular dynamics trajectory.
-Chapter III presents a very different problem of identifying parts of a molecular system that propel (or hinder) a given structural transition.
-In both these cases we applied unsuppervised machine learning techniques (also known as \emph{clustering}), which is a methodology commonly used in finding patterns in seemingly chaotic data.
+The primary aim of this dissertation was the development of methods for extracting relevant information from multi-dimensional data describing biomolecular systems.
+In Chapter~II we present our novel method of discovering quasi-rigid parts in proteins, that was designed to clarify experimental as well as simulation data.
+Chapter~III presents a very different problem of identifying parts of a molecular system that propel (or hinder) a given structural transition.
+In both these cases we applied unsupervised machine learning techniques (in particular, \emph{clustering}), which is a methodology commonly used for finding patterns in unstructured, and seemingly chaotic, data.
 
 In this introductory chapter we give an overview of the molecular dynamics simulation scheme and the machine learning approach.
-The discussion here is broad, and was intended to motivate the application of clustering techniques described in the remainder of the dissertation. % TODO: inaczej
-We go into more details concerning particular molecular dynamics and machine learning algorithms in Chapters II and III. % TODO: inaczej
+The discussion here is broad, and was intended to motivate the application of clustering techniques described in the remainder of this dissertation. % TODO: inaczej
+We go into more details concerning particular molecular dynamics and machine learning algorithms in Chapters~II and~III. % TODO: inaczej
 
 
 \section{Molecular dynamics}
 
-Molecular dynamics (MD) simulations are a wide range of numerical methods designed for the study of molecular systems.
-Typically, the MD approach assumes a classical potential energy function, $U$, also known as the \emph{force field}, which treats atoms as electrostatically charged points, and chemical bonds as springs and hinges.
-The arguments of the function $U$ are configurations $\mathbf{q}$ of the system at hand, and the value $U(\mathbf{q})$ is a real number expressing the potential energy of the system at $\mathbf{q}$.
+Molecular dynamics (MD) are a wide range of numerical methods designed for the study of molecular systems.
+Typically, the MD approach assumes a classical potential energy function $U$ also known as the \emph{force field}, which treats atoms as electrostatically charged points, and chemical bonds as springs and hinges.
+The arguments of the $U$ function are configurations $\mathbf{q}$ of a particular system, with values $U(\mathbf{q})$ emulating the potential energy of the system at that configuration $\mathbf{q}$.
 If we denote the set of all configurations of a given system by $\Omega$, then $U\colon\Omega\to\mathbb{R}$. % TODO: zobacz, czy to nie jest zbedne
-The force acting on atom $i$ is then derived from $U$ by taking a gradient with respect to position $\mathbf{q}_i$ of that atom:
+The force acting on a particular atom $i$ is then derived from $U$ by taking the gradient with respect to position $\mathbf{q}_i$ of that atom:
 $$
 \mathbf{F}_i(\mathbf{q}) = -\nabla_i U(\mathbf{q}),
 $$
-which requires that $U$ is differentiable. 
+which requires of $U$ to be differentiable. 
 
 More accurate algorithms take into account quantum effects, making the simulation more reliable, but also immensely expensive in terms of computational time.
-Although modelling intricate properties of molecular systems using a classical potential may seem an over-simplification, MD has achieved considerable success over the recent years, and is constantly improving.
+However, although modeling intricate properties of molecular systems using a classical potential may seem an over-simplification, MD has achieved considerable success over the recent years, and is constantly improving.
+Classical MD simulations are popular mainly because of their significantly lower computational cost in comparison with their quantum-mechanical counterparts.
+This allows for estimation of free energy profiles of structural transitions, even for large, biologically-relevant systems (such as enzymes, DNA, membrane systems, and other).
 
-Classical MD simulations are popular mainly because of their significantly lower computational cost.
-This allows for estimation of free energy profiles of structural transitions, even for large, biologically relevant systems (such as enzymes, DNA, membrane systems, and other biomolecules).
-Free energy translates into experimentally observable properties, for example, the affinity of a ligand to an enzyme, or the chance of transfering an ion through a membrane channel.
+Free energy translates into experimentally observable properties.
+For example: the affinity of a ligand and an enzyme, or the chance of transferring an ion through a membrane channel.
+Free energy profiles offer insight into the process at hand, but also allow for utilizing feedback from experimental data to refine the modeling potential.
 
-Feedback from experiments contributes to more accurate classical potential energy functions, thus improving MD simulations' reliability.
-However, there is a separate aspect to MD methodology which greatly benefits from information gained from the experiment.
 To run an MD simulations, one needs to choose the right force field, but also~--~and perhaps more importantly~--~the appropriate \emph{sampling technique}.
-The underlying, well-established premise is that molecular systems in thermal equilibrium experience random impulses of momenta, which can be though of as a model of collisions with molecules of the outside world.
+The underlying premise is that molecular systems in thermal equilibrium experience random impulses, which can be though of as a model of collisions with molecules of the surrounding world.
 In other words, the total energy of a system in thermal equilibrium is not conserved, but rather fluctuates around a certain mean value.
 
 Consequently, configurations of a system are characterized by a probability density, which in the case of thermal equilibrium at $T=const$ is the well-known \emph{Boltzmann distribution}:
 \begin{equation}
- \rho_B(\mathbf{q})=Z^{-1} \exp[-U(\mathbf{q})/k_BT], \quad  Z=\int_\Omega \exp[-U(\mathbf{q})/k_BT] d\mathbf{q}
+ \rho_B(\mathbf{q})=Z^{-1} \exp[-U(\mathbf{q})/k_BT],
 \end{equation}
-where $k_B$ is the Boltzmann constant, and $Z$ is a normalizing factor.
-From this probabilistic perspective we can view an MD simulation as a sampling procedure, during which we acquire configurations according to the Boltzmann distribution.
-Macroscopic properties of the system (heat capacity, for example) are defined as expected values of appropriate microscopic quantities, or the probability density itself, as in the case of entropy, or the free energy.
+where $k_B$ is the Boltzmann constant, and $Z$ is a normalizing factor of great importance, often referred to as the \emph{partition function}, given by: $$Z=\int_\Omega \exp[-U(\mathbf{q})/k_BT] d\mathbf{q}.$$
+From this probabilistic perspective we can view an MD simulation as a sampling procedure, during which we \emph{should} acquire configurations according to the Boltzmann distribution.
+Macroscopic properties of the system (affinity of a ligand to an enzyme, for example) are defined as \emph{expected values} of appropriate microscopic quantities, and are estimated by averages over a correctly sampled configurations\footnote{Or the probability density itself, as, for example, in the case of entropy, $$S=-k_B \int \rho_B(\mathbf{x})\log\rho_B(\mathbf{x}) d\mathbf{x}.$$}.
 
-\subsection{Sampling techniques and the Helmholtz free energy}
+\subsection{Sampling techniques and the potential of mean force}
 
-Underlying the simplistic, classical assumptions embedded in MD simulations are complex sampling techniques, used for estimating macroscopic properties of microscopic systems.
-
-MD simulations can mimic time evolution of a system with the use of integration schemes such as the Langevin dynamics, which numerically realizes the Langevin equation:
-\begin{equation}
- \mathbb{M}\ddot{\mathbf{q}} = -\nabla U(\mathbf{q}) -\gamma \mathbb{M}\dot{\mathbf{q}} + \sqrt{2\gamma k_BT\mathbb{M}}\hspace{0.1cm	}\mathbf{R}(t)
-\end{equation}
-
+Underlying the simplistic, classical assumptions embedded in MD simulations are complex sampling techniques used for estimating macroscopic properties of microscopic systems.
+MD simulations can, for example, mimic time evolution of a system with the use of integration schemes such as the \emph{Langevin dynamics}, which numerically integrates the following stochastic differential equation:
+$$
+ \mathbb{M}\ddot{\mathbf{q}} = -\nabla U(\mathbf{q}) -\gamma \mathbb{M}\dot{\mathbf{q}} + \sqrt{2\gamma k_BT\mathbb{M}}\hspace{0.1cm}\mathbf{R}(t)
+$$
 where $\mathbb{M}$ is a diagonal matrix of atom masses, and $\mathbf{R}(t)$ is a stationary Gaussian process with zero mean, and auto-correlation expressed by the delta function: $\langle \mathbf{R}(t)\mathbf{R}(t') \rangle = \delta(t-t')$. 
+It is important to note that although the output of a Langevin dynamics simulation is a trajectory, most sampling techniques avoid modeling the time evolution of a system.
 
-The second point is especially important, because all algorithms designed for sampling the configurational space in the classical MD set-up are naturally transferable to quantum-based methods.
+\subsubsection{Potential of mean force}
 
-\subsubsection{Potential of Mean Force}
+Vast samples of multidimensional points are impossible to interpret, unless we utilize some simplifying technique.
+Probably the most popular representation of a change or transformation occurring in a system is the so-called \emph{collective variable}, along with the concept of the \emph{potential of mean force} (PMF).
+A collective variable $\xi$ is a function of the system's configuration $\mathbf{q}$, defined so that its value can be readily translated into the progress of a particular transformation.
+The PMF associated with a collective variable $\xi$, for a particular value $\xi^*$ of that collective variable, is defined as follows: $$ A(\xi^*):=-k_BT\log \rho (\xi^*), $$ where $\rho$ is a probability density of the configuration $\mathbf{q},$ such that $\xi(\mathbf{q})=\xi^*$.
 
-
+While the collective variable $\xi$ serves as a means of reducing the dimensionality of a complex structural transition, the PMF provides a probabilistic interpretation of the process.
+Through the PMF we gain insight about the transformation's bottle-necks and ranges of values of the collective variable, corresponding to the system's meta-stable states.
+%However, the PMF offers more than just a concise description of a transformation, and because of it 
 
 \section{Unsupervised machine learning}
 
-Data mining / machine learning ... (powinienes jakos zgrabnie opisac machine learning)
+% Data mining / machine learning ... (powinienes jakos zgrabnie opisac machine learning)
 
-Unsupervised machine learning is a class of methods for extracting information from unstructured, multi-dimensional data.
-Roughly, these methods amount to reducing the dimensionality of the data.
+Unsupervised machine learning is a class of algorithms for extracting information from unstructured, multi-dimensional data.
+Roughly, such algorithms amount to reducing the dimensionality of the data.
 Stated differently, unsupervised machine learning tries to address the following questions\footnote{
 These are not the only questions taken up by unsupervised machine learning.
-For example, one of the more interesting, and fast-changing fields is the problem of \emph{community detection}.}:
+Most notably, one of the more interesting, and fast-changing fields is the problem of \emph{community detection}, which is a more general problem than clustering (discussed further).}:
 \begin{itemize}
  \item Is there a clear way of visualizing the data?
- \item Can we partition the set into cohesive subgroups, distinctive from each other?
+ \item Can we partition the dataset into cohesive subgroups, distinctive from each other?
 \end{itemize}
 The collective variable discussed above was a method of dimensionality reduction, but one based on a probabilistic model derived from physical postulates.
 
-Data produced by MD simulations of biomolecules are multi-dimensional trajectories, points $\{ \mathbf{q}_t \}_{t=1}^N$, where $\mathbf{q}_t\in\mathbb{R}^{3n}$ ($N$ is the number of steps of the simulation, and $n$~--~the number of atoms of the system).
-Depending on the sampling technique {\bf adapted} in the MD simulation, the $t$ parameter might by independent of time, as for example in the Monte Carlo sampling.
-Also, configurations acquired from NMR experiments are a multitude of 3-dimensional points.
-Analogously to MD, configurations acquired from NMR experiments can be thought of as a set of multi-dimensional elements, $\mathbf{q}_t\in\mathbb{R}^{3n}$, in which the order imposed by the $t$ parameter has very little to do with time.
+Data produced by MD simulations of biomolecules are multi-dimensional trajectories, points $\{ \mathbf{q}_t \}_{t=1}^S$, where $\mathbf{q}_t\in\mathbb{R}^{3n}$ ($S$ is the number of steps of the simulation, and $n$~--~the number of atoms of the system).
+Depending on the sampling technique {\bf adapted} in the MD simulation, the $t$ parameter may or may not be associated with time, as, for example, in the case of Monte Carlo sampling.
+% Also, configurations acquired from NMR experiments are a multitude of 3-dimensional points.
+Analogously to MD, configurations acquired from NMR experiments can be also thought of as a set of multi-dimensional points, $\mathbf{q}_t\in\mathbb{R}^{3n}$, in which the order imposed by the $t$ parameter has very little to do with time.
 
-Regardless of the source, we are faced with the problem of purifying the information hidden within our data.
-Unsupervised machine learning offers us two methods of simplifying the data: \emph{principal component analysis} (for visualization and pre-processing) and \emph{clustering} (for identifying distinctive subgroups of points).
+Regardless of the source of our data, we are faced with the problem of purifying the information hidden within it.
+Unsupervised machine learning offers us two methods of simplifying the data: \emph{principal component analysis} (for visualization and preprocessing) and \emph{clustering} (for identifying distinctive subgroups of points).
 
-\subsection{Graph representation}
+Clustering is the task of finding distinct subsets (\emph{clusters}) of a given set of objects, which share a high similarity within a given cluster, but low similarity across clusters.
+Inherently, the task requires that a measure of similarity between objects is given, or that a natural measure can be proposed.
+In fact, the similarity function determines the meaning behind any clustering, and often predetermines which clustering algorithms can and cannot be utilized in a given problem.
 
-Tutaj powinna pojawic sie definicja grafow i, byle predko, przedstawiona reprezentacja macierzowa.
-Musisz tez zaakcentowac, ze wybor algorytmu klastrujacego to jedno, a wlasciwa miara podobienstwa nodow - to drugie.
-The choice of a 
+Once we define a similarity function, we are left with choosing the right clustering algorithm.
+\{ ze dwa slowa wiecej \}
+
+
+\subsection{Adjacency matrix representation}\label{sec:matrixRepresentation}
+
+It is important to introduce at this point the matrix representation of a set of objects and their similarity.
+If we enumerate the objects in our set using natural numbers $1,2,3,\ldots,N$, and denote the similarity between objects $i$ and $j$ by $w_{ij}$, we can represent the relations between the objects using a matrix $W\in\mathbb{R}^{N\times N}$.
+Matrix $W$ is referred to as the \emph{similarity} (or: \emph{adjacency}) \emph{matrix}.
 
 \subsection{Dynamic domains as clusters}
 
 Small, globular proteins are often thought of as fairly rigid biomolecules.
-However, the set of low-energy, accessible configurations grows as number of atoms in a system increases.
+However, as the number of atoms in a system increases, the set of low-energy, accessible configurations grows rapidly.
 Consequently, large molecular systems can undergo significant structural changes, involving coordinated, multi-step transitions.
-Due to {\bf nieogarnialnej} complexity of these systems, such phenomena are difficult to comprehend, {\bf let alone}/{\bf a co dopiero} to interpret.
+Due to immense complexity of these systems, such phenomena are difficult to describe, let alone to interpret.
 
-We attempted a method of simplifying these {\bf zlozone} transitions by means of a clustering scheme specifically adapted for this purpose.
+In Chapter~II we introduce a method of simplifying these incomprehensible transitions using a clustering scheme.
+The main idea of our method is to find parts of the protein which~--~although moving with respect to each other~--~remain internally rigid.
+Or, more accurately, \emph{quasi-}rigid, because small variations in distances between amino acids are omnipresent.
+These quasi-rigid parts of the protein are referred to in the literature as \emph{dynamic domains}~\cite{bahar1997direct,hayward1998systematic,hinsen1998analysis}.
 
+In our method of dynamic domains identification we adapted a clustering framework.
+We proposed a measure of strength of a contact between amino acids, and applied an appropriate clustering algorithm to identify quasi-rigid parts of a protein.
+The strength of a contact depends on structural variability of a given pair of residues.
+Having a set of objects (amino acids) and a similarity measure (contact strength between residues), we construct an adjacency matrix.
+This matrix was used as input for a particular, best suited clustering procedure, one of the class of \emph{spectral algorithms}, which is centered around finding eigenvectors of a matrix closely related to the adjacency matrix for a given protein.
 
 \subsection{Molecular cogs as clusters}
+
+In Chapter~III we present our newly-developed method of identifying \emph{molecular cogs}~--~subsystems of a molecule which, for a given structural transformation, drive the transition forward or backwards.
+This is another application of the cluster analysis, although quite different from the one discussed in Chapter~II.
+
+For the purpose of identifying molecular cogs we proposed a ``similarity function'' between pairs of atoms, which indeed quantifies the contributions of that pair the the free energy change along a collective variable.
+With that, we again construct adjacency matrices, and discover clusters which correspond to groups of atoms sharing a common contribution to the free energy (positive or negative).
+However, the method of dynamic domains and molecular cogs identification differ not only at the stage of adjacency matrix construction, but also in the choice of the clustering algorithm.
