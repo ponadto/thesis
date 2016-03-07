@@ -27,26 +27,26 @@ The ResiCon server is available at URL:\\ http://dworkowa.imdik.pan.pl/EP/ResiCo
 
 \section{Introduction}
 Proteins are not static.
-Nuclear magnetic resonance (NMR) spectroscopy (\cite{martin1988two}) and the spin-echo spectroscopy (\cite{bu2011proteins}) experiments show that.
-In several cases it was proven that flexibility may be crucial to protein functionality (\cite{farago2010activation}, \cite{hamelberg2005fast}).
+Nuclear magnetic resonance (NMR) spectroscopy \cite{martin1988two} and the spin-echo spectroscopy \cite{bu2011proteins} experiments show that.
+In several cases it was proven that flexibility may be crucial to protein functionality \cite{farago2010activation}, \cite{hamelberg2005fast}.
 Although experimental methods provide only general clues about intramolecular motions, molecular dynamics (MD) simulations extend their reach by giving a higher resolution picture~--~both in space and time~--~of protein mobility.
-By studying an NMR ensemble or MD trajectory one may notice that it is composed of relatively rigid structural parts, often referred to as \emph{dynamic domains} (\cite{hayward1997model}).
+By studying an NMR ensemble or MD trajectory one may notice that it is composed of relatively rigid structural parts, often referred to as \emph{dynamic domains} \cite{hayward1997model}.
 
 Domains in traditional sense are regarded as parts of the protein which are: conserved (in terms of evolution), autonomous (in terms of folding), and/or compact (in terms of tertiary structure).
 Such ``static'' domains are identified through sequence homology, structural analysis of a single configuration, or both.
-(For conventional methods of identifying protein domains based on multiple sequences or a single structure see e.g. (\cite{richardson1981anatomy}, \cite{bork1991shuffled}).)
+(For conventional methods of identifying protein domains based on multiple sequences or a single structure see e.g. \cite{richardson1981anatomy}, \cite{bork1991shuffled}.)
 Conversely, dynamic domains depend on structural transitions performed by the protein.
 
 A number of methods for identification of dynamic domains have been developed.
-The simplest procedures are based on normal mode analysis, which assumes a harmonic approximation of the potential energy function (\cite{hinsen1998analysis}).
-More advanced approaches use the Gaussian Network Model and analyze correlations in motions between the residues of the protein (\cite{yesylevskyy2006dynamic}).
-Many other approaches have also been developed (\cite{bahar1997direct}, \cite{wriggers1997protein}, \cite{bernhard2010optimal}, \cite{genoni2012identification}, \cite{potestio2009coarse}), but all of them anticipate dynamic domains by analyzing a single structure of a protein.
-Another class of methods for dynamic domains assignment requires exactly two configurations (see \cite{hayward1998systematic}, \cite{lee2003dyndom}, \cite{ye2003flexible}).
+The simplest procedures are based on normal mode analysis, which assumes a harmonic approximation of the potential energy function \cite{hinsen1998analysis}.
+More advanced approaches use the Gaussian Network Model and analyze correlations in motions between the residues of the protein \cite{yesylevskyy2006dynamic}.
+Many other approaches have also been developed \cite{bahar1997direct}, \cite{wriggers1997protein}, \cite{bernhard2010optimal}, \cite{genoni2012identification}, \cite{potestio2009coarse}, but all of them anticipate dynamic domains by analyzing a single structure of a protein.
+Another class of methods for dynamic domains assignment requires exactly two configurations (see \cite{hayward1998systematic}, \cite{lee2003dyndom}, and \cite{ye2003flexible}).
 However, the assumption that two ``representative'' structures encompass all relevant motions is rather speculative.
 
 Experimental and \emph{in silico} methods reach beyond single-structure representation, and are capable of producing numerous configurations of a given protein.
 Rather than inferring dynamic domains from one or two structures, a more natural approach would be to determine them based on an ensemble of configurations.
-GeoStaS is the only method known to us that analyzes a whole ensemble of configurations and assigns each residue to a dynamic domain (\cite{romanowska2012determining}).
+GeoStaS is the only method known to us that analyzes a whole ensemble of configurations and assigns each residue to a dynamic domain \cite{romanowska2012determining}.
 Although GeoStaS can analyze not only proteins but also nucleic acids, it fails to discover dynamic domains whenever they rotate with respect to each other.
 Alternative methods of analyzing ensembles of configurations assign residues to a static ``core'' or unstructured bundle (see \cite{snyder2005clustering}, \cite{kirchner2011objective}).
 
@@ -58,7 +58,7 @@ ResiCon's main functionality is to identify dynamic domains, but it can also fin
 \section{Approach} 
 ResiCon starts with identifying pairs of residues which are \emph{in contact}.
 There are several definitions of contacts between amino-acid residues in the literature.
-We used the definition presented in~(\cite{daniluk2011novel}) and adapted it to the case when more than one structure is given (see also~\cite{daniluk2014theoretical}).
+We used the definition presented in~\cite{daniluk2011novel} and adapted it to the case when more than one structure is given (see also~\cite{daniluk2014theoretical}).
 
 Next, ResiCon constructs a virtual scaffold, connecting residues which are in contact with bars.
 Stiffness of a given bar reflects the estimated strength of the corresponding contact. 
@@ -92,14 +92,14 @@ We say that two residues are \emph{in contact}, if at least one configuration in
 (d_\alpha \leq 6.5\angstrom)\quad \text{or} \quad (d_C \leq 8\angstrom\quad \text{and} \quad d_\alpha - d_C \geq 0.75\angstrom)
 \label{condition}
 \end{equation}
-Threshold values are the same as in definition of contact presented in (\cite{daniluk2011novel}) and relate to the range of distances in which physical interactions between residues occur.
+Threshold values are the same as in definition of contact presented in \cite{daniluk2011novel} and relate to the range of distances in which physical interactions between residues occur.
 The second sub-condition favours residues whose side-chains point towards each other (see~Figure~\ref{contact}). 
 Residues that are sequential neighbors are not taken into account.
 
 We assign a quantitative value to the strength of a contact in terms of geometrical variability of the structural part associated with that contact.
 Such measure is required to capture not only changes in $d_\alpha$, but also rotational shifts and alterations in the backbone in the vicinity of both residues that are in contact.
 To do so, we constructed structural parts, comprising sequential neighbors of the two residues in contact.
-ResiCon assigns a numerical value to the geometric variability by using the least root mean square deviation (RMSD)~(\cite{kabsch1976solution}).
+ResiCon assigns a numerical value to the geometric variability by using the least root mean square deviation (RMSD)~\cite{kabsch1976solution}.
 Before elaborating on the details, we proceed with the following definitions.
 
 \subsubsection*{Elements.}
@@ -166,7 +166,7 @@ The choice of a clustering algorithm is not a trivial task and for the identific
 Firstly, contact matrices for various proteins vary in dimension and density and the clustering algorithm needs to perform well regardless of these variabilities.
 Secondly, the algorithm should facilitate an automated method of choosing the optimal number of clusters. 
 
-Agglomerative hierarchical clustering algorithms are one of the most popular approaches to clustering~(\cite{han2001data}).
+Agglomerative hierarchical clustering algorithms are one of the most popular approaches to clustering~\cite{han2001data}.
 They follow a greedy scheme to construct a dendrogram encoding distances between clusters.
 This dendrogram can be cut at a certain height, which determines the number of clusters.
 If the height parameter could be set so that for all similarity matrices we would obtain high-quality clusters, the hierarchical clustering would have been a good candidate for a clustering procedure.
@@ -201,7 +201,7 @@ The third eigenvector allows to discern the third cluster, composed of nodes $1\
 
 \subsubsection*{Clustering algorithm.}
 We used a spectral clustering algorithm in which partitioning of a graph is expressed in terms of a membership matrix $\chi$.
-A short description of the procedure is presented below, for details refer to~(\cite{weber2004perron}).
+A short description of the procedure is presented below, for details refer to~\cite{weber2004perron}.
 
 Let $Y$ denote the matrix containing $k$ eigenvectors of the $D^{-1}W$ stochastic matrix, corresponding to $k$ largest eigenvalues.
 The procedure computes a linear mapping $\mathcal{A}$ from the eigenvectors $Y$ to the membership matrix:
@@ -229,7 +229,7 @@ Because $\chi_{\text{min}}(4)$ is closer to 0 than $\chi_{\text{min}}(6)$, the o
 \end{figure}
 ResiCon first checks if $k=1$.
 To do so, a partitioning into two clusters is carried out.
-The spectral algorithm presented above finds an optimal cut~(\cite{weber2004perron}) leading to clusters $A$ and $B$ (two sets of indices, that correspond to nodes).
+The spectral algorithm presented above finds an optimal cut~\cite{weber2004perron} leading to clusters $A$ and $B$ (two sets of indices, that correspond to nodes).
 We express the \emph{cost} of such cut by:
 \begin{displaymath}
 f :=  \frac{\sum_{i \in A}\sum_{j \in B} w_{ij}}{\left ( \sum_{k,l \in \text{A}} w_{kl} \right ) \left ( \sum_{k,l \in \text{B}} w_{kl}   \right )} \\
@@ -241,7 +241,7 @@ Default threshold for $f$ used to produce all results presented in this study wa
 Above this value we observed that compact static proteins were partitioned into short (less than four residues long) segments, which we regarded as improper dynamic domains.
 On the other hand, lower values resulted in a single dynamic domain assignment in several cases where two domains were apparent.
 
-If $k>1$, the optimal number of clusters is determined with the use of the indicator presented in~(\cite{weber2004perron}).
+If $k>1$, the optimal number of clusters is determined with the use of the indicator presented in~\cite{weber2004perron}.
 Here, we give a short overview of the properties of $\chi_{\text{min}}$ and propose a simple procedure for computing the optimal number of clusters.
 The indicator $\chi_{\text{min}}(k)$ is defined as the minimal element of the membership matrix $\chi$ found by partitioning it into $k$ clusters.
 
@@ -293,13 +293,13 @@ According to our knowledge, no expert curated database of dynamic domains exists
 Also, we are not aware of any quality measure for the dynamic domains assignment.
 Therefore, we compared different methods by analyzing agreement between their results.
 
-We used the measure presented in (\cite{meilua2007comparing}) called \emph{Variation of Information} ($\mathcal{VI}$) to analyze the results compatibility.
+We used the measure presented in \cite{meilua2007comparing} called \emph{Variation of Information} ($\mathcal{VI}$) to analyze the results compatibility.
 It has the advantage of being a metric in the space of all partitionings of a given dataset.
 The downside of $\mathcal{VI}$ is that its values do not lie in a fixed interval (e.g. $[0,1]$), but instead have an upper bound that depends on the size of data.
 In our case data size equals the number of residues in a given protein.
 This means that values of $\mathcal{VI}$ for partitionings of one protein are not directly comparable to the values acquired for partitionings of another protein, with a different number of residues.
 Nonetheless, when considering a particular protein, the $\mathcal{VI}$ metric quantifies the agreement between different assignments of dynamic domains.
-Here we give an outline of the method, for details see~(\cite{meilua2007comparing}).
+Here we give an outline of the method, for details see~\cite{meilua2007comparing}.
 
 Let us denote a clustering by $\mathcal{C}$.
 It is composed of clusters~--~mutually disjoint subsets $C_1,\ldots,C_k$.
@@ -389,13 +389,13 @@ The ordering of the results is the same as in Figure~\ref{boxWhiskers}, i.e. bes
 \end{table*}
 
 
-We compared ResiCon with two recent methods: GeoStaS (\cite{romanowska2012determining}) and PiSQRD (\cite{potestio2009coarse}).
+We compared ResiCon with two recent methods: GeoStaS \cite{romanowska2012determining} and PiSQRD \cite{potestio2009coarse}.
 The latter method represents the class of methods which identify dynamic domains by analyzing a single structure.
-We used a test set comprising 30 NMR-resolved protein structures exhibiting significant mobility, which was previously used in~(\cite{snyder2005clustering}),~(\cite{kirchner2011objective}), and in~(\cite{romanowska2012determining}).
+We used a test set comprising 30 NMR-resolved protein structures exhibiting significant mobility, which was previously used in~\cite{snyder2005clustering},~\cite{kirchner2011objective}, and in~\cite{romanowska2012determining}.
 The set was initially proposed to examine the efficacy of a method of identifying structurally-stable cores in flexible proteins.
 These structures often contain a single rigid core with significant geometrical distortions present in peripheral regions (as indicated in \cite{snyder2005clustering} and also observable in ResiCon's results). 
 
-We have also used ResiCon to analyze a canonical test case~--~the HIV-1 protease molecule~--~using an MD trajectory computed with a coarse-grained force field RedMD~(\cite{gorecki36causality,gorecki2009redmd}) as input data.
+We have also used ResiCon to analyze a canonical test case~--~the HIV-1 protease molecule~--~using an MD trajectory computed with a coarse-grained force field RedMD~(see \cite{gorecki36causality}, and \cite{gorecki2009redmd}) as input data.
 This example shows that ResiCon is capable of finding dynamic domains of a protein whose functionality depends on flexibility and mobility of its rigid parts.
 
 We also explain the so-called \emph{zebra effect}~--~a peculiar result produced by ResiCon, observed in several cases.
@@ -509,16 +509,16 @@ Although this seems to be an artifact of the clustering algorithm, we will take 
 
 \subsection*{HIV-1 protease}
 An analysis of an MD trajectory of the HIV-1 protease showcases ResiCon's capabilities.
-This protein undergoes substantial\break conformational changes associated with opening/closing of its structural parts, so-called \emph{flaps} (\cite{hamelberg2005fast}).
-A database of X-ray-resolved structures, representing configurations which the protease can attain is available (\cite{vondrasek2002hivdb}).
+This protein undergoes substantial\break conformational changes associated with opening/closing of its structural parts, so-called \emph{flaps} \cite{hamelberg2005fast}.
+A database of X-ray-resolved structures, representing configurations which the protease can attain is available \cite{vondrasek2002hivdb}.
 
-We examined a set of configurations of the HIV-1 protease acquired from a simulation carried out using the RedMD package (\cite{gorecki2009redmd}).
+We examined a set of configurations of the HIV-1 protease acquired from a simulation carried out using the RedMD package \cite{gorecki2009redmd}.
 This coarse-grained force field was designed to simulate intramolecular motions in proteins and nucleic acids.
-It has correctly predicted the flap-opening motion in the HIV-1 protease, which is known biological fact (\cite{hamelberg2005fast}), and was independently confirmed by an all-atom MD simulation (\cite{sadiq2010explicit}).
+It has correctly predicted the flap-opening motion in the HIV-1 protease, which is known biological fact \cite{hamelberg2005fast}, and was independently confirmed by an all-atom MD simulation \cite{sadiq2010explicit}.
 Roughly, about 1\% of the trajectory seems to exhibit significant conformational transitions (flap opening events).
 This is a typical scenario in MD simulations, where a transition between meta-stable states is swift and fairly short.
 We needed a set of representative structures in order to find dynamic domains using ResiCon.
-From the whole trajectory, we extracted a set of 200 configurations using a generic procedure facilitating the Principal Component Analysis (PCA), implemented in the R programming language (in the \texttt{bio3d} package (\cite{grant2006bio3d}))~--~see \emph{Supplementary Materials}.
+From the whole trajectory, we extracted a set of 200 configurations using a generic procedure facilitating the Principal Component Analysis (PCA), implemented in the R programming language (in the \texttt{bio3d} package \cite{grant2006bio3d})~--~see \emph{Supplementary Materials}.
 
 Values of $\chi_\text{min}$ for different numbers of clusters are given in Figure~\ref{minChiList}.
 The optimal number of clusters according to our procedure is 4.
@@ -541,7 +541,7 @@ Structures are colored according to the dynamic domains detected by ResiCon.
 \label{hiv}
 \end{figure}
 Motions of the flaps between the closed and open states are crucial in the functionality of the HIV-1 protease.
-It is also known that throughout their motion they remain quasi-rigid~(\cite{freedberg2002rapid}).
+It is also known that throughout their motion they remain quasi-rigid~\cite{freedberg2002rapid}.
 Therefore, using ResiCon, we successfully extracted a simplified picture of the mobility of HIV-1 protease, which agrees with experimental knowledge.
 
 Alternative partitioning into 6 clusters (see Figure~\ref{6clusters}) also deserves interest.
