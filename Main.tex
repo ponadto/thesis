@@ -6,7 +6,7 @@
 
 \usepackage{graphicx}
 \usepackage{colortbl}
-\usepackage{amsmath,amssymb} %do wzorw matematycznych
+\usepackage{amsmath,amssymb} %do wzorow matematycznych
 \usepackage{amsfonts} %---------||--------------
 \usepackage{eufrak} % TODO: co to?
 
@@ -52,6 +52,13 @@
   pages={e10491},
   year={2010},
   publisher={Public Library of Science}
+}
+
+@book{efron1992bootstrap,
+  title={Bootstrap methods: another look at the jackknife},
+  author={Efron, Bradley},
+  year={1992},
+  publisher={Springer}
 }
 
 @article{bork1991shuffled,
@@ -319,6 +326,26 @@
   pages={673--686},
   year={2005},
   publisher={Wiley Online Library}
+}
+
+@article{sokal1958statistical,
+  title={A statistical method for evaluating systematic relationships},
+  author={Sokal, R. R. and Michener, C. D.},
+  journal={University of Kansas Scientific Bulletin},
+  volume={28},
+  pages={1409--1438},
+  year={1958}
+}
+
+@article{tuckerman2007free,
+  title={Free Energy Calculations: Theory and Applications in Chemistry and Biology},
+  author={Tuckerman, Mark E},
+  journal={Journal of the American Chemical Society},
+  volume={129},
+  number={35},
+  pages={10963--10964},
+  year={2007},
+  publisher={ACS Publications}
 }
 
 @article{taylor2013classification,
@@ -655,15 +682,6 @@
   publisher={American Association for the Advancement of Science}
 }
 
-@article{efron1979bootstrap,
-  title={Bootstrap methods: another look at the jackknife},
-  author={Efron, Bradley},
-  journal={The annals of Statistics},
-  pages={1--26},
-  year={1979},
-  publisher={JSTOR}
-}
-
 @article{carlstein1986use,
   title={The use of subseries values for estimating the variance of a general statistic from a stationary sequence},
   author={Carlstein, Edward},
@@ -707,11 +725,11 @@
 
 
 \usepackage[backend=biber, refsegment=chapter, defernumbers=true, bibencoding=UTF-8]{biblatex}
-
+  
 
 \addbibresource{references.bib}
 
-
+  
 \begin{document} 
 
 \include{Title}
@@ -721,8 +739,8 @@
 \chapter{Introduction}
 
 The primary aim of this dissertation was the development of methods for extracting relevant information from multi-dimensional data describing biomolecular systems.
-In Chapter~II we present our novel method of discovering quasi-rigid parts in proteins, that was designed to clarify experimental as well as simulation data.
-Chapter~III presents a very different problem of identifying parts of a molecular system that propel (or hinder) a given structural transition.
+In Chapter~2 we present our novel method of discovering quasi-rigid parts in proteins, that was designed to clarify experimental as well as simulation data.
+Chapter~3 presents a very different problem of identifying parts of a molecular system that propel (or hinder) a given structural transition.
 In both these cases we applied unsupervised machine learning techniques (in particular, \emph{clustering}), which is a methodology commonly used for finding patterns in unstructured, and seemingly chaotic, data.
 
 In this introductory chapter we give an overview of the molecular dynamics simulation scheme and the machine learning approach.
@@ -828,7 +846,7 @@ However, as the number of atoms in a system increases, the set of low-energy, ac
 Consequently, large molecular systems can undergo significant structural changes, involving coordinated, multi-step transitions.
 Due to immense complexity of these systems, such phenomena are difficult to describe, let alone to interpret.
 
-In Chapter~II we introduce a method of simplifying these incomprehensible transitions using a clustering scheme.
+In Chapter~2 we introduce a method of simplifying these incomprehensible transitions using a clustering scheme.
 The main idea of our method is to find parts of the protein which~--~although moving with respect to each other~--~remain internally rigid.
 Or, more accurately, \emph{quasi-}rigid, because small variations in distances between amino acids are omnipresent.
 These quasi-rigid parts of the protein are referred to in the literature as \emph{dynamic domains}~\cite{bahar1997direct,hayward1998systematic,hinsen1998analysis}.
@@ -841,8 +859,8 @@ This matrix was used as input for a particular, best suited clustering procedure
 
 \subsection{Molecular cogs as clusters}
 
-In Chapter~III we present our newly-developed method of identifying \emph{molecular cogs}~--~subsystems of a molecule which, for a given structural transformation, drive the transition forward or backwards.
-This is another application of the cluster analysis, although quite different from the one discussed in Chapter~II.
+In Chapter~3 we present our newly-developed method of identifying \emph{molecular cogs}~--~subsystems of a molecule which, for a given structural transformation, drive the transition forward or backwards.
+This is another application of the cluster analysis, although quite different from the one discussed in Chapter~2.
 
 For the purpose of identifying molecular cogs we proposed a ``similarity function'' between pairs of atoms, which indeed quantifies the contributions of that pair the the free energy change along a collective variable.
 With that, we again construct adjacency matrices, and discover clusters which correspond to groups of atoms sharing a common contribution to the free energy (positive or negative).
@@ -1015,7 +1033,7 @@ Secondly, the algorithm should facilitate an automated method of choosing the op
 Agglomerative hierarchical clustering algorithms are one of the most popular approaches to clustering~\cite{han2001data}.
 They follow a greedy scheme to construct a dendrogram encoding distances between clusters.
 This dendrogram can be cut at a certain height, which determines the number of clusters.
-If the height parameter could be set so that for all similarity matrices we	 would obtain high-quality clusters, the hierarchical clustering would have been a good candidate for a clustering procedure.
+If the height parameter could be set so that for all similarity matrices we would obtain high-quality clusters, the hierarchical clustering would have been a good candidate for a clustering procedure.
 However, as we explain in the \emph{Supplementary Materials}, estimation of this parameter is difficult, and to determine the number of clusters we would need to extend the conventional hierarchical clustering with a measure of cluster quality.
 
 This was one of the reasons we have chosen a spectral clustering algorithm, which has an inherent indicator of a partitioning's quality.
@@ -1880,7 +1898,7 @@ Atoms \texttt{\textbf{N1-C5-C6-I7}} (yellow) were used to define the dihedral an
 \end{figure}
 
 We focused on the free energy differences and energetic contributions for the $\xi_X\to\xi_Y$ path.
-For these end-points we {\color{black}obtain} the free energy difference \mbox{$\Delta A\approx-16.4 \frac{\text{kcal}}{\text{mol}}$}, which is close to the energetic contribution, $\Delta E\approx-16.7\frac{\text{kcal}}{\text{mol}}$.
+For these end-points we {\color{black}obtain} the free energy difference\break\mbox{$\Delta A\approx-16.4 \frac{\text{kcal}}{\text{mol}}$}, which is close to the energetic contribution, $\Delta E\approx-16.7\frac{\text{kcal}}{\text{mol}}$.
 The residual $0.3\frac{\text{kcal}}{\text{mol}}$ is the entropic contribution, which was negligible for our model.
 
 \subsection{Overview}
@@ -2113,7 +2131,7 @@ Our future aim is to analyze more complex systems, and to develop a publicly ava
 
 \chapter{Conclusions}
 
-In this closing chapter we re-iterate the most important findings of the methods presented in Chapters~II and~III, and propose several refinements to them.
+In this closing chapter we re-iterate the most important findings of the methods presented in Chapters~2 and~3, and propose several refinements to them.
 
 \section{Dynamic domains}
 
@@ -2135,7 +2153,7 @@ In particular, the Locality-Sensitive Hashing (LSH) algorithm offers this kind o
 
 \section{Molecular cogs}
 
-The fundamental assumption of the molecular cogs methodology presented in Chapter~III was that there are two, \emph{distinct} groups of atoms, cooperating to propel the system forward (or backward) along a given collective variable.
+The fundamental assumption of the molecular cogs methodology presented in Chapter~3 was that there are two, \emph{distinct} groups of atoms, cooperating to propel the system forward (or backward) along a given collective variable.
 However, we concluded that the clustering procedure has its limitations in cases in which the molecular system \emph{as a whole} has a general propensity to move in a certain direction.
 In such cases, the more valuable insight would be the knowledge about which group of atoms plays the dominant role in such an effect.
 
@@ -2143,8 +2161,8 @@ Instead of using the definitive approach of clustering, one might consider emplo
 \emph{Community detection} offers such functionality, but also allows for the identification of hierarchical structures.
 With the help from a community detection algorithm, we could, for example, search for groups of atoms with different degrees of contribution to the system's tendency to make a transition.
 
-From a different stand point, the method presented in Chapter~III employed constrained molecular dynamics (cMD) to estimate local changes in the Helmholtz free energy.
-However, as we noticed in Chapter~III, the cMD has limitations, which would render it ineffective for large systems.
+From a different stand point, the method presented in Chapter~3 employed constrained molecular dynamics (cMD) to estimate local changes in the Helmholtz free energy.
+However, as we noticed in Chapter~3, the cMD has limitations, which would render it ineffective for large systems.
 An alternative sampling technique~--~most notably: the Adaptive Biasing Force (ABF) method~--~could remedy this impediment, but at the cost of a more complicated and time-demanding implementation.
 We left the ABF-driven improvement for a future molecular cogs identification scheme.
 
@@ -2163,7 +2181,7 @@ We might use MSM to discover the influence of a given subset on the kinetics of 
 \section{Final comments}
 
 Complex data produced in biophysical experiments (both, \emph{in silico} and \emph{in vivo}) may often contain valuable information whose extraction demands efficient statistical methods.
-This information can by unexpected, like the ``pivot point'' amino acids revealed by the analysis of the HIV-1 protease trajectory presented in Chapter II.
+This information can by unexpected, like the ``pivot point'' amino acids revealed by the analysis of the HIV-1 protease trajectory presented in Chapter 2.
 Therefore, it is of paramount importance that such methods:
 \begin{enumerate}
  \item convey easily interpretable
@@ -2175,7 +2193,7 @@ It is our experience and belief that these three conditions are indispensable fo
 
 \begin{appendices}
   
-\chapter{Supplementary Materials for Chapter II}
+\chapter{Supplementary Materials for Chapter 2}
 
 
 
@@ -2183,7 +2201,7 @@ It is our experience and belief that these three conditions are indispensable fo
 We show in the main article that the spectral clustering algorithm employed by ResiCon leads to high-quality results.
 This algorithm has many advantages, one of which is a versatile internal indicator of clustering quality.
 This is important because similarity matrices used as input for the clustering procedure differ in size and density.
-In this paragraph we highlight the problem of choosing the right number of clusters in case of a standard agglomerative hierarchical clustering~--~UPGMA~\cite{Sokal1958}.
+In this paragraph we highlight the problem of choosing the right number of clusters in case of a standard agglomerative hierarchical clustering~--~UPGMA~\cite{sokal1958statistical}.
 
 UPGMA starts out with all elements in separate groups.
 The algorithm proceeds iteratively, at each stage joining the two nearest clusters, continuing until there is just a single cluster.
@@ -2540,6 +2558,9 @@ The histograms of $\mathcal{VI}$ for \texttt{1d1d} are presented in Figure~\ref{
 \end{figure}
 
 
+\newlength{\bufferspace}
+\setlength{\bufferspace}{3cm}
+
 
 Results presented in the following tables are presented in the same order as in the main article, i.e. best-scoring results are first.
 \begin{sidewaystable}[h!]
@@ -2580,7 +2601,15 @@ Results presented in the following tables are presented in the same order as in 
 \cline{1-6}
 \multicolumn{1}{|c|}{P2} & \includegraphics[width=3cm]{stripe1AEY_P2} & 2.10 & 2.10 & 1.29 & 0 & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{5}{*}{}  \\
 \cline{1-11}
-\\
+\end{tabular*}
+\normalfont
+\end{sidewaystable}
+
+
+
+\begin{sidewaystable}[h!]
+\sffamily
+\begin{tabular*}{4cm}{cc|c|c|c|c|c|c|c|c|c|}
 \cline{1-11}
 \multicolumn{2}{|c|}{{\bf \texttt{1pkt}}} & R & G & P1 & P2 & ResiCon & GeoStaS & PiSQRD (P1) & PiSQRD (P2) & \multirow{5}{*}{\vspace{-0.15cm}\includegraphics[height=2.1cm]{threeHistogram1PKT}}  \\
 \cline{1-10}
@@ -2616,7 +2645,15 @@ Results presented in the following tables are presented in the same order as in 
 \cline{1-6}
 \multicolumn{1}{|c|}{P2} & \includegraphics[width=3cm]{stripe1PIT_P2} & 2.06 & 2.98 & 2.20 & 0 & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{5}{*}{}  \\
 \cline{1-11}
-\\
+\end{tabular*}
+\normalfont
+\end{sidewaystable}
+
+
+
+\begin{sidewaystable}[h!]
+\sffamily
+\begin{tabular*}{4cm}{cc|c|c|c|c|c|c|c|c|c|}
 \cline{1-11}
 \multicolumn{2}{|c|}{{\bf \texttt{2vil}}} & R & G & P1 & P2 & ResiCon & GeoStaS & PiSQRD (P1) & PiSQRD (P2) & \multirow{5}{*}{\vspace{-0.15cm}\includegraphics[height=2.1cm]{threeHistogram2VIL}}  \\
 \cline{1-10}
@@ -2628,15 +2665,7 @@ Results presented in the following tables are presented in the same order as in 
 \cline{1-6}
 \multicolumn{1}{|c|}{P2} & \includegraphics[width=3cm]{stripe2VIL_P2} & 1.66 & 2.49 & 0.91 & 0 & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{5}{*}{}  \\
 \cline{1-11}
-\end{tabular*}
-\normalfont
-\end{sidewaystable}
-
-
-
-\begin{sidewaystable}[h!]
-\sffamily
-\begin{tabular*}{4cm}{cc|c|c|c|c|c|c|c|c|c|}
+\\
 \cline{1-11}
 \multicolumn{2}{|c|}{{\bf \texttt{1aiw}}} & R & G & P1 & P2 & ResiCon & GeoStaS & PiSQRD (P1) & PiSQRD (P2) & \multirow{5}{*}{\vspace{-0.15cm}\includegraphics[height=2.1cm]{threeHistogram1AIW}}  \\
 \cline{1-10}
@@ -2660,7 +2689,15 @@ Results presented in the following tables are presented in the same order as in 
 \cline{1-6}
 \multicolumn{1}{|c|}{P2} & \includegraphics[width=3cm]{stripe2KTF_P2} & 2.10 & 2.37 & 1.77 & 0 & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{5}{*}{}  \\
 \cline{1-11}
-\\
+\end{tabular*}
+\normalfont
+\end{sidewaystable}
+
+
+
+\begin{sidewaystable}[h!]
+\sffamily
+\begin{tabular*}{4cm}{cc|c|c|c|c|c|c|c|c|c|}
 \cline{1-11}
 \multicolumn{2}{|c|}{{\bf \texttt{1vve}}} & R & G & P1 & P2 & ResiCon & GeoStaS & PiSQRD (P1) & PiSQRD (P2) & \multirow{5}{*}{\vspace{-0.15cm}\includegraphics[height=2.1cm]{threeHistogram1VVE}}  \\
 \cline{1-10}
@@ -2696,7 +2733,15 @@ Results presented in the following tables are presented in the same order as in 
 \cline{1-6}
 \multicolumn{1}{|c|}{P2} & \includegraphics[width=3cm]{stripe1VVD_P2} & 3.36 & 3.74 & 3.28 & 0 & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{5}{*}{}  \\
 \cline{1-11}
-\\
+\end{tabular*}
+\normalfont
+\end{sidewaystable}
+
+
+
+\begin{sidewaystable}[h!]
+\sffamily
+\begin{tabular*}{4cm}{cc|c|c|c|c|c|c|c|c|c|}
 \cline{1-11}
 \multicolumn{2}{|c|}{{\bf \texttt{2spz}}} & R & G & P1 & P2 & ResiCon & GeoStaS & PiSQRD (P1) & PiSQRD (P2) & \multirow{5}{*}{\vspace{-0.15cm}\includegraphics[height=2.1cm]{threeHistogram2SPZ}}  \\
 \cline{1-10}
@@ -2720,15 +2765,7 @@ Results presented in the following tables are presented in the same order as in 
 \cline{1-6}
 \multicolumn{1}{|c|}{P2} & \includegraphics[width=3cm]{stripe1LEB_P2} & 2.43 & 2.61 & 2.25 & 0 & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{5}{*}{}  \\
 \cline{1-11}
-\end{tabular*}
-\normalfont
-\end{sidewaystable}
-
-
-\begin{sidewaystable}[h!]
-\sffamily
-\begin{tabular*}{4cm}{cc|c|c|c|c|c|c|c|c|c|}
-\cline{1-11}
+\\
 \multicolumn{2}{|c|}{{\bf \texttt{2ait}}} & R & G & P1 & P2 & ResiCon & GeoStaS & PiSQRD (P1) & PiSQRD (P2) & \multirow{5}{*}{\vspace{-0.15cm}\includegraphics[height=2.1cm]{threeHistogram2AIT}}  \\
 \cline{1-10}
 \multicolumn{1}{|c|}{R} & \includegraphics[width=3cm]{stripe2AIT2} & 0 & 0.71 & 2.16 & 1.97 & \multirow{4}{*}{\vspace{-0.3cm}\includegraphics[height=1.82cm]{clustering2AIT2}} & \multirow{4}{*}{\vspace{-0.3cm}\includegraphics[height=1.82cm]{clustering2AIT1}} & \multirow{4}{*}{\vspace{-0.3cm}\includegraphics[height=1.82cm]{clustering2AITP1}} & \multirow{4}{*}{\vspace{-0.3cm}\includegraphics[height=1.82cm]{clustering2AITP2}} &  \multirow{5}{*}{} \\
@@ -2739,7 +2776,15 @@ Results presented in the following tables are presented in the same order as in 
 \cline{1-6}
 \multicolumn{1}{|c|}{P2} & \includegraphics[width=3cm]{stripe2AIT_P2} & 1.97 & 2.22 & 2.09 & 0 & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{5}{*}{}  \\
 \cline{1-11}
-\\
+\end{tabular*}
+\normalfont
+\end{sidewaystable}
+
+
+
+\begin{sidewaystable}[h!]
+\sffamily
+\begin{tabular*}{4cm}{cc|c|c|c|c|c|c|c|c|c|}
 \cline{1-11}
 \multicolumn{2}{|c|}{{\bf \texttt{2k3c}}} & R & G & P1 & P2 & ResiCon & GeoStaS & PiSQRD (P1) & PiSQRD (P2) & \multirow{5}{*}{\vspace{-0.15cm}\includegraphics[height=2.1cm]{threeHistogram2K3C}}  \\
 \cline{1-10}
@@ -2775,7 +2820,15 @@ Results presented in the following tables are presented in the same order as in 
 \cline{1-6}
 \multicolumn{1}{|c|}{P2} & \includegraphics[width=3cm]{stripe1A67_P2} & 2.29 & 2.69 & 2.59 & 0 & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{5}{*}{}  \\
 \cline{1-11}
-\\
+\end{tabular*}
+\normalfont
+\end{sidewaystable}
+
+
+
+\begin{sidewaystable}[h!]
+\sffamily
+\begin{tabular*}{4cm}{cc|c|c|c|c|c|c|c|c|c|}
 \cline{1-11}
 \multicolumn{2}{|c|}{{\bf \texttt{3egf}}} & R & G & P1 & P2 & ResiCon & GeoStaS & PiSQRD (P1) & PiSQRD (P2) & \multirow{5}{*}{\vspace{-0.15cm}\includegraphics[height=2.1cm]{threeHistogram3EGF}}  \\
 \cline{1-10}
@@ -2816,6 +2869,7 @@ Results presented in the following tables are presented in the same order as in 
 \end{sidewaystable}
 
 
+
 \begin{sidewaystable}[h!]
 \sffamily
 \begin{tabular*}{4cm}{cc|c|c|c|c|c|c|c|c|c|}
@@ -2854,7 +2908,15 @@ Results presented in the following tables are presented in the same order as in 
 \cline{1-6}
 \multicolumn{1}{|c|}{P2} & \includegraphics[width=3cm]{stripe1D1D_P2} & 0.21 & 1.51 & 3.17 & 0 & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{5}{*}{}  \\
 \cline{1-11}
-\\
+\end{tabular*}
+\normalfont
+\end{sidewaystable}
+
+
+
+\begin{sidewaystable}[h!]
+\sffamily
+\begin{tabular*}{4cm}{cc|c|c|c|c|c|c|c|c|c|}
 \cline{1-11}
 \multicolumn{2}{|c|}{{\bf \texttt{2l14}}} & R & G & P1 & P2 & ResiCon & GeoStaS & PiSQRD (P1) & PiSQRD (P2) & \multirow{5}{*}{\vspace{-0.15cm}\includegraphics[height=2.1cm]{threeHistogram2L14}}  \\
 \cline{1-10}
@@ -2890,7 +2952,15 @@ Results presented in the following tables are presented in the same order as in 
 \cline{1-6}
 \multicolumn{1}{|c|}{P2} & \includegraphics[width=3cm]{stripe2HTG_P2} & 2.29 & 2.29 & 1.68 & 0 & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{5}{*}{}  \\
 \cline{1-11}
-\\
+\end{tabular*}
+\normalfont
+\end{sidewaystable}
+
+
+
+\begin{sidewaystable}[h!]
+\sffamily
+\begin{tabular*}{4cm}{cc|c|c|c|c|c|c|c|c|c|}
 \cline{1-11}
 \multicolumn{2}{|c|}{{\bf \texttt{1qo6}}} & R & G & P1 & P2 & ResiCon & GeoStaS & PiSQRD (P1) & PiSQRD (P2) & \multirow{5}{*}{\vspace{-0.15cm}\includegraphics[height=2.1cm]{threeHistogram1QO6}}  \\
 \cline{1-10}
@@ -2902,13 +2972,7 @@ Results presented in the following tables are presented in the same order as in 
 \cline{1-6}
 \multicolumn{1}{|c|}{P2} & \includegraphics[width=3cm]{stripe1QO6_P2} & 0.61 & 0.62 & 3.12 & 0 & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{4}{*}{} & \multirow{5}{*}{}  \\
 \cline{1-11}
-\end{tabular*}
-\normalfont
-\end{sidewaystable}
-
-\begin{sidewaystable}[h!]
-\sffamily
-\begin{tabular*}{4cm}{cc|c|c|c|c|c|c|c|c|c|}
+\\
 \cline{1-11}
 \multicolumn{2}{|c|}{{\bf \texttt{2k0e}}} & R & G & P1 & P2 & ResiCon & GeoStaS & PiSQRD (P1) & PiSQRD (P2) & \multirow{5}{*}{\vspace{-0.15cm}\includegraphics[height=2.1cm]{threeHistogram2K0E}}  \\
 \cline{1-10}
@@ -2937,17 +3001,12 @@ Results presented in the following tables are presented in the same order as in 
 \end{sidewaystable}
 
 
-\begin{thebibliography}{}
-
-\bibitem[1]{Sokal1958} Sokal, R., Michener, C. (1958) A statistical method for evaluating systematic relationships. {\it University of Kansas Science Bulletin} {\bf 38}: 1409--1438.
-
-\end{thebibliography}
 
 
-\chapter{Supplementary Materials for Chapter III}
+\chapter{Supplementary Materials for Chapter 3}
 \section{Constrained Molecular Dynamics}\label{sec:appendixA}
 
-In the blue moon ensemble method [1], the conditional expected value of quantity $f$, given $\xi=\xi^*$ can be computed using the \emph{Fixman correction}:
+In the blue moon ensemble method~\cite{carter1989constrained}, the conditional expected value of quantity $f$, given $\xi=\xi^*$ can be computed using the \emph{Fixman correction}:
 \begin{equation}\label{eq:fixman}
  \langle f \rangle_{\xi^*} = \frac{\langle m_\xi^{1/2} f \rangle_{\xi^*\dot{\xi}}}{\langle m_\xi^{1/2} \rangle_{\xi^*\dot{\xi}}},
 \end{equation}
@@ -2962,22 +3021,22 @@ where $\lambda$ is chosen such that $\xi=\xi^*$ and $\dot{\xi}=0$:
 $$
 \lambda = m_\xi \left( \sum_i \frac{1}{m_i}\frac{\partial\xi}{\partial\mathbf{x}_i}\frac{\partial U}{\partial\mathbf{x}_i} - \mathbf{v}\cdot\mathbb{H}\mathbf{v} \right).
 $$
-The Andersen thermostat [2] for standard $NVT$ sampling was implemented in the Python programming language, and the Open Babel package (ver. 2.3.2) to model the molecule.
+The Andersen thermostat~\cite{den2013revisiting} for standard $NVT$ sampling was implemented in the Python programming language, and the Open Babel package (ver. 2.3.2) to model the molecule.
 
 However, we observed that rotations around the \texttt{N1--C5} bond were much rarer than in a standard NVT simulation.
 Consequently, the interactions of hydrogens from the \texttt{[NH3+]} with the rest of the molecule were inequivalent, and thus the clustering procedures assigned these hydrogens to different clusters.
 Consequently, although the hydrogens from the \texttt{[NH3+]} group should have been equivalent, their interactions with the rest of the molecule were different.
 
-To streamline the sampling, we added a multidimensional replica-exchange scheme [3] to the Andersen thermostat.
+To streamline the sampling, we added a multidimensional replica-exchange scheme~\cite{sugita2000multidimensional} to the Andersen thermostat.
 We initiated each simulation with 3 models, with the dihedral angle \texttt{C6-C5-N1-H2} set to three different values (spanning the range of 360\degree evenly), all at the same temperature $T=300$ K.
 The frequency of replica swapping was set to $1$ in every $10^3$ steps of the cMD simulation, for randomly chosen pairs of copies of the molecule.
 If the swapping was accepted, the system was equilibrated for $10^2$ steps, keeping $\xi=\xi^*$ constant.
 
 Sampling of the troublesome degree of freedom associated with rotations around the \texttt{N1--C5} bond required additional care, but was fairly simple.
-However, as was noted by Darve in [4], sampling at $\xi=\xi^*$ using cMD may be, in general, impractical because energy barriers separating transitional pathways become virtually impassable.
+However, as was noted by Darve in~\cite{tuckerman2007free}, sampling at $\xi=\xi^*$ using cMD may be, in general, impractical because energy barriers separating transitional pathways become virtually impassable.
 Therefore, cMD simulations in a more general setting are likely to be prohibitively complicated.
 This drawback is the main disadvantage of our current molecular cogs finding procedure.
-We believe, however, that the Adaptive Biasing Force [4] should help alleviate the limitations of cMD, and adapting this methodology to our approach should be the natural future approach in finding molecular cogs in more complex systems.
+We believe, however, that the Adaptive Biasing Force~\cite{tuckerman2007free} should help alleviate the limitations of cMD, and adapting this methodology to our approach should be the natural future approach in finding molecular cogs in more complex systems.
 
 \section{Error estimation using a bootstrapping procedure}\label{sec:bootstrapping}
 The conditional expected value of quantity $f$ given $\xi=\xi^*$, is estimated from a cMD simulation, {\color{black}as suggested by Equation~\ref{eq:fixman}.}
@@ -2988,10 +3047,10 @@ An alternative approach, called \emph{bootstrapping}, does not require any assum
 Bootstrapping allows estimation of a given statistical quantity (e.g. average) along with its accuracy measure (e.g. variance).
 Given a set of points \mbox{$S:=\{ x_i \}_{i=1}^K$}, new sets \mbox{$S_j:=\{ x_i^j \}_{i=1}^{K}$} are resampled from $S$ with replacement.
 The basic idea of bootstrapping is to calculate a given statistical quantity independently for data sets $\{ S_j \}_{j=1}^K$, and, based on these results, extract the measure of accuracy. 
-In its original form proposed by Efron et al. [5], data points in set $S$ are assumed to be uncorrelated.
+In its original form proposed by Efron et al.~\cite{efron1992bootstrap}, data points in set $S$ are assumed to be uncorrelated.
 However, consecutive data points acquired from a cMD simulation are correlated.
-We, therefore, applied a \emph{block bootstrap}, an extension of the original bootstrapping procedure, in which correlation within the data is allowed and accounted for [6].
-The block bootstrap divides the set $S$ into $b$ non-overlapping blocks\footnote{This is the \emph{Carlstein's blocking rule}; for a review of this and other methods see [7,8].} of length $k$, such that $bk=K$. 
+We, therefore, applied a \emph{block bootstrap}, an extension of the original bootstrapping procedure, in which correlation within the data is allowed and accounted for~\cite{carlstein1986use}.
+The block bootstrap divides the set $S$ into $b$ non-overlapping blocks\footnote{This is the \emph{Carlstein's blocking rule}; for a review of this and other methods see \cite{hall1995blocking,kreiss2011bootstrap}.} of length $k$, such that $bk=K$. 
 The $i$th block, $B_i$, contains $b$ consecutive data points, such that $B_i=( x_{(i-1)k+1},\ldots,x_{ik} )$, for $1\leq i\leq b$.
 Next, the procedure draws randomly $b$ blocks with replacement, combines them into a new data set and with its use calculates a given statistical quantity.
 This procedure is repeated many times, yielding an array of estimates from which measures of accuracy are inferred.
@@ -3006,7 +3065,7 @@ The errors reported in the plots in the \emph{Results} section are the standard 
 \section{Merging two clusterings from the AP method}\label{sec:appendixB}
 Below we give a short description of the Affinity Propagation (AP) method and explain how we used this approach to produce an initial set of solutions for the genetic clustering algorithm.
 
-Given an affinity matrix, $\mathcal{C}$, the AP algorithm constructs the \emph{availability}, $\mathcal{A}$, and \emph{responsibility}, $\mathcal{R}$, matrices (see Figure~\ref{fig:apExample}; a good description of the AP method can be found in [5]).
+Given an affinity matrix, $\mathcal{C}$, the AP algorithm constructs the \emph{availability}, $\mathcal{A}$, and \emph{responsibility}, $\mathcal{R}$, matrices (see Figure~\ref{fig:apExample}; a good description of the AP method can be found in~\cite{efron1992bootstrap}).
 Then, for object $i$, the value of $k$ which maximizes $[\mathcal{A}]_{ik}+[\mathcal{R}]_{ik}$ indicates whether $i$ is an examplar (if $i=k$), or identifies the exemplar to which $i$ is assigned.
 An object is chosen to be an exemplar if it is indeed the best representative of a group, or if it is dissimilar to all other objects.
 In the latter case, such an exemplar is in fact an outcast, having a negative or null affinity to other objects.
@@ -3033,7 +3092,7 @@ These were the nodes for which there were positive values in the $(\mathcal{A}+\
 \end{figure}
 
 It is important to note, that the cooperation matrix (introduced in the main article) has zeros on the diagonal (an atom does not interact with itself), whereas in the AP method a value on the diagonal indicates the predisposition of an object to become an exemplar.
-Frey and Dueck suggest setting the diagonal with a mean affinity of a given object to all other objects, or simply setting the whole diagonal with equal values [9].
+Frey and Dueck suggest setting the diagonal with a mean affinity of a given object to all other objects, or simply setting the whole diagonal with equal values~\cite{frey2007clustering}.
 
 We needed to produce a single partitioning independent of the sign of the collective variable.
 For this purpose, two sets of exemplars, $E_+$ and $E_-$, were inferred from $\mathcal{C}$ and $-\mathcal{C}$ affinity matrices.
