@@ -54,6 +54,107 @@
   publisher={Public Library of Science}
 }
 
+@article{chen2016xgboost,
+  title={Xgboost: A scalable tree boosting system},
+  author={Chen, Tianqi and Guestrin, Carlos},
+  journal={arXiv preprint arXiv:1603.02754},
+  year={2016}
+}
+
+@article{dziubinski2015toward,
+  title={Toward the identification of molecular cogs},
+  author={Dziubi{\'n}ski, Maciej and Lesyng, Bogdan},
+  journal={Journal of computational chemistry},
+  year={2015},
+  publisher={Wiley Online Library}
+}
+
+@article{dziubinski2016resicon,
+  title={ResiCon: a method for the identification of dynamic domains, hinges and interfacial regions in proteins},
+  author={Dziubi{\'n}ski, Maciej and Daniluk, Pawe{\l} and Lesyng, Bogdan},
+  journal={Bioinformatics},
+  volume={32},
+  number={1},
+  pages={25--34},
+  year={2016},
+  publisher={Oxford Univ Press}
+}
+
+@inproceedings{ester1996density,
+  title={A density-based algorithm for discovering clusters in large spatial databases with noise.},
+  author={Ester, Martin and Kriegel, Hans-Peter and Sander, J{\"o}rg and Xu, Xiaowei and others},
+  booktitle={Kdd},
+  volume={96},
+  number={34},
+  pages={226--231},
+  year={1996}
+}
+
+@techreport{fix1951discriminatory,
+  title={Discriminatory analysis-nonparametric discrimination: consistency properties},
+  author={Fix, Evelyn and Hodges Jr, Joseph L},
+  year={1951},
+  institution={DTIC Document}
+}
+
+@book{gorban2008principal,
+  title={Principal manifolds for data visualization and dimension reduction},
+  author={Gorban, Alexander N and K{\'e}gl, Bal{\'a}zs and Wunsch, Donald C and Zinovyev, Andrei Y and others},
+  volume={58},
+  year={2008},
+  publisher={Springer}
+}
+
+
+@article{maaten2008visualizing,
+  title={Visualizing data using t-SNE},
+  author={Maaten, Laurens van der and Hinton, Geoffrey},
+  journal={Journal of Machine Learning Research},
+  volume={9},
+  number={Nov},
+  pages={2579--2605},
+  year={2008}
+}
+
+@inproceedings{macqueen1967some,
+  title={Some methods for classification and analysis of multivariate observations},
+  author={MacQueen, James and others},
+  booktitle={Proceedings of the fifth Berkeley symposium on mathematical statistics and probability},
+  volume={1},
+  number={14},
+  pages={281--297},
+  year={1967},
+  organization={Oakland, CA, USA.}
+}
+
+@article{sarich2010approximation,
+  title={On the approximation quality of Markov state models},
+  author={Sarich, Marco and No{\'e}, Frank and Sch{\"u}tte, Christof},
+  journal={Multiscale Modeling \& Simulation},
+  volume={8},
+  number={4},
+  pages={1154--1177},
+  year={2010},
+  publisher={SIAM}
+}
+
+@inproceedings{gionis1999similarity,
+  title={Similarity search in high dimensions via hashing},
+  author={Gionis, Aristides and Indyk, Piotr and Motwani, Rajeev and others},
+  booktitle={VLDB},
+  volume={99},
+  number={6},
+  pages={518--529},
+  year={1999}
+}
+
+@article{nair2015massively,
+  title={Massively parallel methods for deep reinforcement learning},
+  author={Nair, Arun and Srinivasan, Praveen and Blackwell, Sam and Alcicek, Cagdas and Fearon, Rory and De Maria, Alessandro and Panneershelvam, Vedavyas and Suleyman, Mustafa and Beattie, Charles and Petersen, Stig and others},
+  journal={arXiv preprint arXiv:1507.04296},
+  year={2015}
+}
+
 @book{efron1992bootstrap,
   title={Bootstrap methods: another look at the jackknife},
   author={Efron, Bradley},
@@ -212,6 +313,24 @@
   number={3},
   pages={417--429},
   year={1998}
+}
+
+@inproceedings{ho1995random,
+  title={Random decision forests},
+  author={Ho, Tin Kam},
+  booktitle={Document Analysis and Recognition, 1995., Proceedings of the Third International Conference on},
+  volume={1},
+  pages={278--282},
+  year={1995},
+  organization={IEEE}
+}
+
+@book{james2013introduction,
+  title={An introduction to statistical learning},
+  author={James, Gareth and Witten, Daniela and Hastie, Trevor and Tibshirani, Robert},
+  volume={6},
+  year={2013},
+  publisher={Springer}
 }
 
 @article{kabsch1976solution,
@@ -720,6 +839,17 @@
   year={2011},
   publisher={Elsevier}
 }
+
+@article{wu2009external,
+  title={External validation measures for K-means clustering: A data distribution perspective},
+  author={Wu, Junjie and Chen, Jian and Xiong, Hui and Xie, Ming},
+  journal={Expert Systems with Applications},
+  volume={36},
+  number={3},
+  pages={6050--6061},
+  year={2009},
+  publisher={Elsevier}
+}
 \end{filecontents}
 
 
@@ -734,61 +864,161 @@
 
 \include{Title}
 
+%\include{Abstract}
+
 \tableofcontents
 
 \chapter{Introduction}
 
-The primary aim of this dissertation was the development of methods for extracting relevant information from multi-dimensional data describing biomolecular systems.
-In Chapter~2 we present our novel approach of discovering quasi-rigid parts in proteins, that can be used to clarify experimental as well as simulation data.
-Chapter~3 presents a very different problem of identifying parts of a molecular system that propel (or hinder) a given structural transition.
-In both these cases we applied unsupervised machine learning techniques (in particular, \emph{clustering}), which is a methodology commonly used for finding patterns in unstructured, and seemingly chaotic, data.
+The primary aim of this work was the development of methods for extracting relevant information from multi-dimensional data describing biomolecular systems.
+We adapted advanced approaches from the general-purpose field of \emph{machine learning}, and in particular~--~from the \emph{unsupervised} machine learning methodology.
+In Chapter~2, we present our recently published method of discovering quasi-rigid parts in proteins, that can be used to better interpret experimental as well as simulation data.
+Chapter~3 presents a different problem of identifying parts of a molecular system that propel (or hinder) a given structural transition.
+In both these cases we applied \emph{clustering} algorithms, commonly used for finding patterns in unstructured~--~and seemingly chaotic~--~data.
 
-In this introductory chapter we give an overview of the molecular dynamics simulation scheme and the machine learning approach.
-The discussion here is broad, and was intended to motivate the application of clustering techniques described in the remainder of this dissertation. % TODO: inaczej
-We go into more details concerning particular molecular dynamics and machine learning algorithms in Chapters~II and~III. % TODO: inaczej
+In this introductory chapter, we give an overview of the machine learning approach and the molecular dynamics simulation scheme.
+These opening mini-reviews were intended to sketch a map of the current state of knowledge, and mark the research frontier engaged in this work.
+Particular clustering algorithms and molecular dynamics technique are discussed in more details in Chapters~2 and~3.
 
-\section{Unsupervised machine learning}
+\section{Machine learning}
 
-% Data mining / machine learning ... (powinienes jakos zgrabnie opisac machine learning)
+Machine learning is a branch of computer science, concerned with algorithms that ``learn'' how to extract pertinent information from noisy, complicated datasets.
+The three main branches of machine learning are: \emph{supervised}, \emph{unsupervised} and \emph{reinforcement} learning.
+The first is concerned with assigning a class (or: label) to a given observation, assuming that an independent and correctly labeled dataset is known beforehand.
+The unsupervised learning deals with a similar task, except that there is no prior (nor posterior, for that matter) knowledge about which observations should be assigned to which class, nor is it clear what is the ``right'' number of such classes.
+The reinforcement learning regime, often identified with artificial intelligence, deals with the problem of taking \emph{actions} under certain \emph{conditions} (or: in a given \emph{environment}), so as to maximize the cumulative \emph{reward}. 
+Most notably, reinforcement learning algorithms are used in games (such as chess), but despite their tremendous impact on present and~--~probably~--~future research\footnote{See, for example, Google's Gorila project~\cite{nair2015massively}, or Skynet from the \emph{Terminator} franchise.}, their discussion reaches beyond the scope of this dissertation, and we shall not present them in more detail.
 
-Unsupervised machine learning is a class of algorithms for extracting information from unstructured, multi-dimensional data.
-Roughly, such algorithms amount to reducing the dimensionality of the data.
-Stated differently, unsupervised machine learning tries to address the following questions\footnote{
-These are not the only questions taken up by unsupervised machine learning.
+\subsection{Supervised machine learning}
+
+The data may have an underlying~--~but difficult to define~--~structure, so that each observation comprising the dataset belongs to a particular class\footnote{
+Typically \emph{regression} is also considered a part of the supervised learning scheme~\cite{james2013introduction}.
+In principal, the regression problem is broader than classification~--~instead of discreet classes, observations are ascribed real values. 
+Thus, regression deals with the task of approximating the function $f$ that for each observation $\mathbf{x}$ assigns its corresponding value, $f(\mathbf{x})$.
+However, for the purposes of this short review we shall focus only on classification.
+}.
+We say that the data are \emph{labeled}, i.e. each observation has a label assigning it to one of $m$ classes.
+In other words, the dataset is composed of $N$ observations, $\{ (\mathbf{x}_i, y_i) \}_{i=1}^N$, where each observation is a pair with: a vector $\mathbf{x}_i$ describing the $i^\text{th}$ instance, and a corresponding label $y_i$.
+The vector $\mathbf{x}_i$ includes features, each with its own domain (discreet, continuous, or other).
+The label $y_i$, on the other hand, takes on one of $m$ values, corresponding to one of $m$ pre-defined classes.
+Supervised machine learning algorithms try to capture correlation, mutual information, or any other types of relations between the features and the labels $y$, to produce a prediction for any new, previously unseen, observation.
+
+Because the primary aim of supervised learning is the assignment of observations to classes, it is also known as the \emph{classification problem}, and particular algorithms are referred to as \emph{classifiers}.
+One of the first classifying algorithms was the \emph{k nearest neighbors} ($k$-NN) method, proposed as early as 1951~\cite{fix1951discriminatory}.
+In $k$-NN we assume the observations are points embedded in a metric space, so that their mutual distance can be readily calculated.
+For a given $k$, and a set of points with known labels, we assign a new observation to the class, which is most prevalent among its $k$ nearest neighbors.
+In the case of a 2-class problem, it is advised to choose an odd number of neighbors to avoid ties.
+However, $k$-NN suffers from noisy data (uninformative coordinates in the vectors $\mathbf{x}$ describing the observations), and from the ``curse of dimensionality'' (the problem of finding truly close neighbors in a high-dimensional space).
+
+A great number of classification methods have been proposed in lieu of $k$-NN, and it is not the purpose of this work to present them all.
+However, it is noteworthy that alongside new supervised learning algorithms, auxiliary meta-methods have been developed, that combine several classifiers and greatly surpass their individual predictive power.
+Most notable are the \emph{bagging} and \emph{boosting} schemes.
+In fact, one of the most powerful classification method to date is the \emph{eXtreme Gradient Boosting} (XGBoost) algorithm~\cite{chen2016xgboost}, that combines boosting and \emph{random forests}~\cite{ho1995random} (another high-ranking classifier which we shall not discuss further).
+
+Practitioners of supervised machine learning can test their skill by participating in contests held at \texttt{www.kaggle.com}.
+Most of these contests offer prizes (most famous is the \$1 million Netflix competition), but more importantly, the discussion at \texttt{www.kaggle.com} forums is the most current source of information about the trends, novelties and successes of cutting-edge machine learning methods. 
+
+\subsection{Unsupervised machine learning}
+
+Unsupervised machine learning is a class of algorithms for extracting information from unstructured datasets.
+Fundamentally, these methods address the following questions\footnote{
+These are not the only questions raised by unsupervised machine learning methods.
 Most notably, one of the more interesting, and fast-changing studies is the \emph{community detection}, which is a more general problem than clustering.
 But as machine learning becomes more and more popular, new problems and applications arise, and it is difficult to draw a clear line that would encompass the whole field of unsupervised machine learning.}:
 \begin{itemize}
- \item Is there a clear way of visualizing the data?
- \item Can we partition the dataset into cohesive subgroups, distinctive from each other?
+ \item Is there a clear way of visualizing a complex set of data?
+ \item Can we partition a dataset into cohesive subgroups, distinctive from each other?
  \item What  statistically significant patterns (e.g. correlations, rules, causality relationships) are present in the dataset?
 \end{itemize}
 
-As we explain further in this chapter, one source of data that can be processed  
-Regardless of the source of our data, we are faced with the problem of purifying the information hidden within it.
-Unsupervised machine learning offers us two methods of simplifying the data: \emph{principal component analysis} (for visualization and preprocessing) and \emph{clustering} (for identifying distinctive subgroups of points).
+As we explain further, the data considered in this dissertation came from numerical simulations of molecular models.
+However, unsupervised machine learning is commonly used for analyses of all sorts of objects: websites, genomic data, points on a map, etc. 
+But regardless of the source of these data, we are faced with the problem of purifying the information hidden within it.
+Unsupervised machine learning offers two main methods of simplifying the data: \emph{dimensionality reduction} (predominantly: principal component analysis), and \emph{clustering} (for identifying distinctive subgroups of objects).
 
-Given a set of objects, clustering is the task of finding subsets (\emph{clusters}) of objects, which share a high similarity within a given cluster, but low similarity across clusters.
-Inherently, the task requires that a measure of similarity between objects is given, or that a natural measure can be proposed.
-In fact, the similarity function determines the meaning behind any clustering, and often predetermines which clustering algorithms can and cannot be utilized in a given problem.
+\subsubsection{Principal component analysis}
 
-In Chapter 2, we propose and utilize a similarity function expressing geometrical variability of pairs of amino acids.
-As a result, the clustering indicates structural parts of a protein that are internally rigid, i.e. composed of amino acids sharing low geometrical variability.
-In Chapter 3, the similarity is defined for pairs of atoms, and expresses their input to the free energy change associated with a given structural transition.
-As a result, the clustering yields two parts of a molecule that cooperate in pushing the transformation forward, and pulling it backward~--~we dubbed these parts \emph{molecular cogs}. 
+The \emph{principal component analysis} (PCA) is a transformation that, for a given set of observation points with correlated coordinates, yields a set of points with coordinates that are no longer correlated.
+Typically, those uncorrelated observations are represented using a lesser number of dimensions, therefore PCA is often regard as a dimensionality reduction procedure.
+As such, PCA is often employed in the exploratory phase of an analysis.
 
-\subsection{Adjacency matrix representation}\label{sec:matrixRepresentation}
+However, exploratory data analysis is not the only application for PCA; it is commonly used in reducing noise in observations in supervised learning methods, thus enhancing their predictive power.
+In Chapter~2, we facilitate PCA to select representative structures from a large set of configurations of the HIV-1 protease.
+These representatives are then used as input for our cluster analysis, leading to quasi-rigid structural parts of a protein.
+
+The PCA is not without its limitations.
+At its core, PCA relies on covariance as a measure of relatedness between coordinates of the vectors representing observations in the dataset.
+However, null covariance of two random variables $X$ and $Y$ does not imply that they are independent\footnote{
+In particular, $Y$ and $X = Y^2$ are uncorrelated if (for example) $Y$ is normally distributed with a zero mean, yet they are clearly dependent.
+}.
+Thus, whenever we are unwilling to assume that covariance is a reliable measure of dependence, we should use more advanced techniques (e.g., one of many non-linear PCA variants~\cite{gorban2008principal}, or the immensely popular $t$-SNE algorithm~\cite{maaten2008visualizing}).
+
+\subsubsection{Overview of popular clustering methods}
+
+One of the first clustering methods was the \emph{k-means} algorithm~\cite{macqueen1967some} ($k$ indicating the number of clusters), in which points are assigned to the cluster with the closest mean.
+Finding an exact solution to the $k$-means problem is computationally intractable, therefore most implementations carry out a greedy, iterative procedure that converges to a local minimum.
+Such an approximate solution is, in most cases, satisfactory, however the main disadvantage of the $k$-means algorithm reveals itself whenever clusters have a stretched out shape.
+In such cases, the $k$-means disregards the oblong shape of the groupings, because it does not account for gaps between clusters, neither for their ``continuity''.
+
+Another popular clustering algorithm, DBSCAN (\emph{Density-Based Spatial Clustering of Applications with Noise})~\cite{ester1996density}, alleviates $k$-means' problems by identifying clusters as continuous, dense ``clouds'' of points.
+As a result, the clusters are allowed to have even complex shapes, as long as they retain their connected structure.
+However, although DBSCAN is capable of recognizing oblong clusters, it often fails to identify frontiers between them.
+That is, DBSCAN has difficulties in discerning weak connections between clusters from strong, frequent ones within them.
+As a result, DBSCAN is a poor choice when dealing with sets of points with many weak inter-cluster connections.
+
+DBSCAN requires a metric or a similarity function, that expresses relatedness of two observations.
+This is a common scenario, in which we are more focused on the relations between objects, rather than how to describe them using a multi-dimensional vector.
+It makes for a convenient setup as it puts an emphasis on the meaning of clusters (assuming we chose a meaningful measure of relatedness), instead of individual objects.
+
+Alternative to DBSCAN, and a fairly natural approach to clustering, is a methods called \emph{agglomerative hierarchical} clustering.
+Like in DBSCAN, we need to specify a metric (or a similarity measure) that quantifies relatedness pairs of objects in the dataset.
+Hierarchical clustering is a greedy, iterative procedure, that builds clusters by merging groups of points that are closest.
+This closeness may be expressed in terms the minimal distance between any two points from the two groups, in terms of their mean distance, or in a number of different ways.
+The procedure stops, when the minimal closeness of clusters exceeds a pre-defined threshold, called the \emph{height parameter}\footnote{
+Its name is associated with the fact that mergers carried out by the hierarchical procedure may be represented as a specific type of a graph, called the \emph{tree}.
+The point at which we stop the mergers is related to the height of that tree, hence the name of the parameter.}.
+One of the drawbacks of the hierarchical clustering scheme is that it is difficult to choose the optimal value for the height parameter.
+Additional criteria may be utilized for this purpose, but even then the ``best'' value of the parameter may be volatile and even a slight change in its value yields a completely different result.
+
+Great many other clustering algorithms have been proposed to answer the needs arising in many different fields of application.
+Currently, the most valued clustering algorithms are those that prove useful in a whole variety of problems.
+That is, methods that work well regardless of the shape of the clusters, the exact nature of the similarity measure, or small changes in the input paramters.
+
+\subsubsection{Number of clusters}
+
+Most clustering algorithms require as input a parameter $k$, indicating the number of clusters.
+Alternatively, some other parameter may be required that ultimately determines the number of clusters (for example, the height parameter in hierarchical clustering~--~see the discussion in Chapter~2).
+
+The $k$ parameter is crucial, as it pre-determines the result of any clustering algorithm.
+Assuming we chose a clustering algorithm, a typical strategy of finding the optimal number of clusters is to carry out the procedure for $k=2,\ldots,K$.
+Then, for each clustering we evaluate the result using an external quality measure~(see \cite{wu2009external} for a comprehensive review).
+However, such an approach only adds to the overall complexity of the clustering problem, because different external quality measures are suitable for different applications.
+
+\subsection{Adjacency matrix representation and spectral clustering}\label{sec:matrixRepresentation}
 
 It is important to introduce at this point the matrix representation of a set of objects and their similarity.
 If we enumerate the objects in our set using natural numbers $1,2,3,\ldots,N$, and denote the similarity between objects $i$ and $j$ by $w_{ij}$, we can represent the relations between the objects using a matrix $W\in\mathbb{R}^{N\times N}$.
-Matrix $W$ is referred to as the \emph{similarity} (or: \emph{adjacency}) \emph{matrix}, and we refer to it repeatedly throughout the dissertation.
+Matrix $W$ is referred to as the \emph{similarity} (or: \emph{adjacency}) \emph{matrix}, and we refer to it repeatedly throughout this dissertation.
 
-Vast majority of 
+The clustering method used in Chapter~2 finds an optimal subdivision of the dataset by examining the eigenvectors and eigenvalues of the similarity matrix.
+At a glance, it seems plausible that the eigenvectors of the similarity matrix somehow summarize the structure of the data.
+But~--~perhaps more suprisingly~--~the eigenvalues contain information about the ``distortion'' of the clustering, and can thus help in choosing the optimal number of clusters.
+Therefore, the spectral clustering algorithm discussed in Chapter 2 not only provided us with high-quality partitions, but also suggested the \emph{right} number of clusters.
+
+
+\subsubsection{Unsupervised machine learning in this dissertation}
+
+In Chapter~2, we propose and utilize a similarity function expressing geometrical variability of pairs of amino acids.
+As a result, the clustering indicates structural parts of a protein that are internally rigid, i.e. composed of amino acids sharing low geometrical variability.
+In Chapter~3, the similarity is defined for pairs of atoms, and expresses their contribution to the free energy change associated with a given structural transition.
+As a result, the clustering yields two parts of a molecule that cooperate in pushing the transformation forward, or pulling it backwards.
+We call these parts \emph{molecular cogs}, to draw an analogy to the popular view that large biomolecules can often be thought of as ``molecular machines''. 
 
 \section{Molecular dynamics}
 
-Molecular dynamics (MD) are a wide range of numerical methods designed for the study of molecular systems.
-Typically, the MD approach assumes a classical potential energy function $U$ also known as the \emph{force field}, which treats atoms as electrostatically charged points, and chemical bonds as springs and hinges.
-The arguments of the $U$ function are configurations $\mathbf{q}$ of a particular system, with values $U(\mathbf{q})$ emulating the potential energy of the system at that configuration $\mathbf{q}$.
+Molecular dynamics (MD) comprise a wide range of numerical methods designed for the study of motions and properties of molecular systems.
+Typically, the MD approach assumes a classical potential energy function, approximated by an analytical function $U$, with force field parameters, which treats atoms as electrostatically charged points, and chemical bonds as springs and hinges.
+The arguments of the $U$ function are atomic configurations $\mathbf{q}$ of the molecular system, with the potential energy values, $U(\mathbf{q})$.
 If we denote the set of all configurations of a given system by $\Omega$, then $U\colon\Omega\to\mathbb{R}$. % TODO: zobacz, czy to nie jest zbedne
 The force acting on a particular atom $i$ is then derived from $U$ by taking the gradient with respect to position $\mathbf{q}_i$ of that atom:
 $$
@@ -799,25 +1029,34 @@ which requires of $U$ to be differentiable.
 More accurate algorithms take into account quantum effects, making the simulation more reliable, but also immensely expensive in terms of computational time.
 However, although modeling intricate properties of molecular systems using a classical potential may seem an over-simplification, MD has achieved considerable success over the recent years, and is constantly improving.
 Classical MD simulations are popular mainly because of their significantly lower computational cost in comparison with their quantum-mechanical counterparts.
-This allows for estimation of free energy profiles of structural transitions, even for large, biologically-relevant systems (such as enzymes, DNA, membrane systems, and other).
-Regardless of MD's  can be therefore thought of as a testing ground for advanced sampling techniques, and pattern-recognition techniques such as the aforementioned unsupervised machine learning.
+This, in particular, allows for estimation of free energy profiles of structural transitions, even for large, biologically-relevant systems (such as enzymes, DNA, membrane systems, and others).
+MD can be therefore thought of as a testing ground for advanced sampling techniques, but also pattern-recognition techniques such as the aforementioned unsupervised machine learning.
 
 The free energy translates into experimentally observable properties.
-In particular: the affinity of a ligand and an enzyme, or the chance of transferring an ion through a membrane channel.
-Free energy profiles offer insight into the process at hand, but also allow for utilizing feedback from experimental data to refine the modeling potential.
+In particular, the affinity of a ligand and an enzyme, or the chance of transferring an ion through a membrane channel.
+Free energy profiles offer insight into the process at hand, but also allow for utilizing feedback from experimental data to refine the modeling potentials.
 
 To run MD simulations, one needs to choose the right force field, but also~--~and perhaps more importantly~--~the appropriate \emph{sampling technique}.
-The underlying premise is that molecular systems in thermal equilibrium experience random impulses, which can be modelled via collisions with molecules of the surrounding world.
+The underlying premise is that molecular systems in thermal equilibrium experience random impulses, which can be modelled \emph{via} collisions with molecules of the surrounding world.
 The total energy of a system in thermal equilibrium is, therefore, \emph{not} constant, but rather fluctuates around a certain mean value.
 
-Consequently, configurations of a system are characterized by a probability density, which in the case of thermal equilibrium ($T=const$) is the well-known \emph{Boltzmann distribution}:
+Consequently, configurations of a system are characterized by a probability density, which in the case of thermal equilibrium ($T=const.$) is the well-known \emph{Boltzmann distribution}:
 \begin{equation}
  \rho_B(\mathbf{q})=Z^{-1} \exp[-U(\mathbf{q})/k_BT],
 \end{equation}
-where $k_B$ is the Boltzmann constant, and $Z$ is a normalizing factor of great importance, often referred to as the \emph{partition function}, given by: $$Z=\int_\Omega \exp[-U(\mathbf{q})/k_BT] d\mathbf{q}.$$
-From this probabilistic perspective we can view an MD simulation as a sampling procedure, during which we \emph{should} acquire configurations according to the Boltzmann distribution (assuming $T=const$).
-Macroscopic properties of the system (affinity of a ligand to an enzyme, for example) are defined as \emph{expected values} of appropriate microscopic quantities, and are estimated by averages over configurations sampled in an MD simulation\footnote{Or the probability density itself, as, for example, in the case of entropy, $$S=-k_B \int \rho_B(\mathbf{x})\log\rho_B(\mathbf{x}) d\mathbf{x}.$$}.
-It is of paramount importance that the sample is produced correctly, i.e. so that the \emph{whole} configurational space is adequately represented, and that the estimates do not suffer from enormous statistical errors.
+where $k_B$ is the Boltzmann constant, and $Z$ is a normalizing factor of great importance, often referred to as the \emph{partition function}, given by: 
+$$Z=\int_\Omega \exp[-U(\mathbf{q})/k_BT] d\mathbf{q}.$$
+From this probabilistic perspective we can view an MD simulation as a sampling procedure, during which we \emph{should} acquire configurations according to the Boltzmann distribution (assuming $T=const.$).
+Macroscopic properties of the system (affinity of a ligand to an enzyme, for example) are defined as \emph{expected values} of appropriate microscopic quantities, and are estimated by averages over configurations sampled in an MD simulation.
+In the constant temperature regime, MD and Monte Carlo simulation data can be used to estimate internal energy, $E$, entropy, $S$, and the free energy, $A$, of a system using basic formulae: 
+$$E = \langle U \rangle,$$ 
+$$S = -k_B \langle \log \rho_B \rangle,$$
+and 
+$$A = E - TS,$$ 
+respectively.
+The $\langle \cdot \rangle$ denotes either the time-average (MD case) or ensemble-average (Monte Carlo case).
+It is of paramount importance that the sample is generated correctly, i.e. so that the \emph{whole} configurational space is adequately scanned, and that the estimates do not suffer from enormous statistical errors.
+
 
 \subsection{Sampling techniques and the potential of mean force}
 
@@ -827,56 +1066,77 @@ $$
  \mathbb{M}\ddot{\mathbf{q}} = -\nabla U(\mathbf{q}) -\gamma \mathbb{M}\dot{\mathbf{q}} + \sqrt{2\gamma k_BT\mathbb{M}}\hspace{0.1cm}\mathbf{R}(t)
 $$
 where $\mathbb{M}$ is a diagonal matrix of atom masses, and $\mathbf{R}(t)$ is a stationary Gaussian process with zero mean, and auto-correlation expressed by the Dirac delta function: $\langle \mathbf{R}(t)\mathbf{R}(t') \rangle = \delta(t-t')$. 
-It is important to note that although the output of a Langevin dynamics simulation is a trajectory, most sampling techniques avoid modeling the time evolution of a system.
+It is important to note that although the output of a Langevin dynamics simulation is a trajectory, most sampling techniques avoid calling it the real time-evolution of a system.
 
 \subsubsection{Potential of mean force}
 
-Vast samples of multidimensional points produced in the course of a are impossible to interpret, unless we utilize some simplifying technique.
-Probably the most popular representation of a change or transformation occurring in a system is the so-called \emph{collective variable}, along with the concept of the \emph{potential of mean force} (PMF).
-A collective variable $\xi$ is a function of the system's configuration $\mathbf{q}$, defined so that its value can be readily translated into the progress of a particular transformation.
+Vast samples of multidimensional points produced in the course of an MD simulation are impossible to interpret, unless we utilize some simplifying technique.
+Probably the most popular representation of a change or transformation occurring in a system is the so-called \emph{collective variable}, and the accompanying concept of the \emph{potential of mean force} (PMF).
+A collective variable $\xi$ is a function of the system's configuration $\mathbf{q}$, defined so that its change can be readily translated into the progress of a particular transformation.
 The PMF for a particular value $\xi^*$ of that collective variable, is defined as follows: 
 $$ A(\xi^*):=-k_BT\log \rho (\xi^*), $$ 
 where $\rho$ is a probability density of the configuration $\mathbf{q},$ such that $\xi(\mathbf{q})=\xi^*$.
 
 While the collective variable $\xi$ serves as a means of reducing the dimensionality of a complex structural transition, the PMF provides a probabilistic interpretation of the process.
-Through the PMF we gain insight about the transformation's bottle-necks and ranges of values of the collective variable, corresponding to the system's meta-stable states.
-In Chapter 3, we describe our method of discovering the so-called \emph{molecular cogs}, which was possible by embedding a particular sampling technique aimed at extracting the PMF.
+Through the PMF we gain insight into the transformation's bottle-necks and into the ranges of values of the collective variable, corresponding to the system's meta-stable states.
+In Chapter~3, we describe our method of discovering the so-called \emph{molecular cogs}, which was possible by embedding a particular sampling technique aimed at extracting the PMF.
 
-\subsection{Unsupervised machine learning as ...}
+\subsection{Unsupervised machine learning in molecular data analysis}
 
 Data produced by MD simulations of biomolecules are multi-dimensional trajectories, points $\{ \mathbf{q}_t \}_{t=1}^S$, where $\mathbf{q}_t\in\mathbb{R}^{3n}$ ($S$ is the number of steps of the simulation, and $n$~--~the number of atoms of the system).
 Depending on the sampling technique adapted in the MD simulation, the $t$ parameter may or may not be associated with time, as, for example, in the case of Monte Carlo sampling.
 Analogously to MD, configurations acquired from NMR experiments can be also thought of as a set of multi-dimensional points, $\mathbf{q}_t\in\mathbb{R}^{3n}$, in which the order imposed by the $t$ parameter has very little to do with time.
 
+The methods presented in Chapters~2 and~3 of this dissertation exploit unsupervised machine learning to infer properties and mechanics of molecular systems from noisy, multi-dimensional data.
+It is our hope that this type of analysis allows for better understanding of molecular systems, and gives an incentive for posing new hypotheses for more experimentally-oriented research.
 
-\subsection{Dynamic domains as clusters}
+\subsubsection{Dynamic domains as clusters}
 
 Small, globular proteins are often thought of as fairly rigid biomolecules.
 However, as the number of atoms in a system increases, the set of low-energy, accessible configurations grows rapidly.
-Consequently, large molecular systems can undergo significant structural changes, involving coordinated, multi-step transitions.
+Consequently, large molecular systems can undergo significant structural changes, involving collective, multi-step transitions.
 Due to immense complexity of these systems, such phenomena are difficult to describe, let alone to interpret.
 
-In Chapter~2 we introduce a method of simplifying these incomprehensible transitions using a clustering scheme.
+In Chapter~2, we introduce a method of simplifying these incomprehensible transitions using a clustering scheme.
 The main idea of our method is to find parts of the protein which~--~although moving with respect to each other~--~remain internally rigid.
 Or, more accurately, \emph{quasi-}rigid, because small variations in distances between amino acids are omnipresent.
-These quasi-rigid parts of the protein are referred to in the literature as \emph{dynamic domains}~\cite{bahar1997direct,hayward1998systematic,hinsen1998analysis}.
+In the literature, these quasi-rigid parts of the protein are referred to as \emph{dynamic domains}~\cite{bahar1997direct,hayward1998systematic,hinsen1998analysis}.
 
-In our method of dynamic domains identification we adapted a clustering framework.
+In the dynamic domains identification we adapted a clustering framework.
 We proposed a measure of strength of a contact between amino acids, and applied an appropriate clustering algorithm to identify quasi-rigid parts of a protein.
 The strength of a contact depends on structural variability of a given pair of residues.
-Having a set of objects (amino acids) and a similarity measure (contact strength between residues), we construct an adjacency matrix.
-This matrix was used as input for a particular, best suited clustering procedure, one of the class of \emph{spectral algorithms}, which is centered around finding eigenvectors of a matrix closely related to the adjacency matrix for a given protein.
+Having a set of objects (amino acids) and a similarity measure (contact strength between residues), we constructed an adjacency matrix.
+This matrix was used as input for a particular, best suited clustering procedure, one of the class of \emph{spectral algorithms}, which is focused on finding eigenvectors of a matrix, closely related to the adjacency matrix for a given protein.
 
-\subsection{Molecular cogs as clusters}
+\subsubsection{Molecular cogs as clusters}
 
-In Chapter~3 we present our newly-developed method of identifying \emph{molecular cogs}~--~subsystems of a molecule which, for a given structural transformation, drive the transition forward or backwards.
-This is another application of the cluster analysis, although quite different from the one discussed in Chapter~2.
+In Chapter~3, we present our newly-developed method of identifying \emph{molecular cogs}~--~subsystems of a molecule which, for a given structural transformation, drive the transition forwards or backwards.
+This is another application of the cluster analysis, although very different from the one discussed in Chapter~2.
 
 For the purpose of identifying molecular cogs we proposed a ``similarity function'' between pairs of atoms, which indeed quantifies the contributions of that pair the the free energy change along a collective variable.
 With that, we again construct adjacency matrices, and discover clusters which correspond to groups of atoms sharing a common contribution to the free energy (positive or negative).
 However, the method of dynamic domains and molecular cogs identification differ not only at the stage of adjacency matrix construction, but also in the choice of the clustering algorithm.
 
+\section{The overall aim of this dissertation}
 
+Both, simulation and experimentally acquired data become increasingly complex, in particular because:
+\begin{itemize}
+ \item the systems under study are progressively larger,
+ \item and their structural transitions comprise chaotic paths in multi-dimensional configurational spaces.
+\end{itemize}
+For both these reasons, we need to facilitate methods of extracting the underlying structure of the data, to gain perspective, and to augment our 3-dimensional perception in order to pose new hypotyses about the biomolecular world.
+
+One problem arising in computational biophysics is the identification of dynamic domains, where the input are configurations produced in the course of an MD simulation, or an NMR experiment.
+Although highly mobile and flexible, many proteins have structurally static sub-regions.
+By expressing protein's conformations in terms of quasi-rigid parts that move with respect to one another, but remain internally  rigid, we could significantly simplify the description of their dynamic nature.
+
+The second problem tackled in this dissertation is the identification of molecular subsystem that play an active role in structural transformations of the whole systems.
+The focus of this study was more technical, as the molecules analyzed therein were small.
+However, we were aiming at discovering conceptual and methodological caveats that were bound to hinder an analysis of larger molecules such as proteins.
+
+The overall aim of this dissertation was the simplification of complex, dynamical properties of molecular systems.
+We applied unsupervised machine learning techniques to two such problems.
+In the following chapters we describe how we constructed the adjacency matrices used for clustering, how we chose the optimal number of clusters, and how we verified that the obtained clusters conveyed valuable insight.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CHAPTER II 
@@ -888,13 +1148,23 @@ However, the method of dynamic domains and molecular cogs identification differ 
 
 \chapter{ResiCon: a method for the identification of dynamic domains, hinges and interfacial regions in proteins}
 
-The text of Chapter 2 largely contains material published in the Oxford Journal \emph{BIONFORMATICS}.
-The co-authors made the following contributions: Bogdan Lesyng ...; Pawe\l{} Daniluk came up with the idea of using contacts as a mean of assessing structural variability and provided expertise regarding analysis of protein structures.
+The text of Chapter~2 largely contains material published in the Oxford Journal \emph{BIONFORMATICS}~\cite{dziubinski2016resicon}. 
+The co-authors, Bogdan Lesyng and Pawe\l{} Daniluk, came up with the idea of using contacts as a means of assessing structural variability and provided expertise regarding analysis of protein structures and clustering strategies.
 
-\section{Motivation and set-up}
+\subsubsection{Motivation and set-up}
 
 In the introductory chapter, we observed that the interpretation of a clustering procedure depends on the measure used to express pairwise similarity between objects in a dataset.
-Likewise, the \emph{quality} of the clustering depends on how cleverly 
+Likewise, the \emph{quality} of the clustering depends on how cleverly this measure is chosen.
+The similarity measure can be conjured up from experience, intuition or any oter premise, but it stand to reason that only those measures that successfully capture pertinent information are likely to yield valuable insight.
+
+The method of dynamic domains detection described in the following chapter makes use of a structure-based similarity measure between two amino-acid residues.
+On the one hand, such a measure is fairly simple, which makes the interpretation of the clustering much easier.
+On the other hand, the measure was expected to capture essential interactions between residues, as pairs of amino-acids that remain close together are more likely to attract, rather than repel one another.
+
+The results of our method (ResiCon) were compared to those of two other methods in the field.
+The first one (GeoStaS) is purely structure-based, however the formulation of the similarity measure used therein lacks any physical motivation.
+The second (PiSQRD) uses a measure that was aimed at describing physical interactions between amino-acid residues.
+Results presented in this chapter show that ResiCon found a middle ground between these two methods, yielding more compact and rigid dynamic domains than either GeoStaS or PiSQRD.
 
 \section{Introduction}
 Proteins are not static.
@@ -1381,7 +1651,7 @@ Although this seems to be an artifact of the clustering algorithm, we will take 
 
 \subsection*{HIV-1 protease}
 An analysis of an MD trajectory of the HIV-1 protease showcases ResiCon's capabilities.
-This protein undergoes substantial\break conformational changes associated with opening/closing of its structural parts, so-called \emph{flaps}~\cite{hamelberg2005fast}.
+This protein undergoes substantial conformational changes associated with opening/closing of its structural parts, so-called \emph{flaps}~\cite{hamelberg2005fast}.
 A database of X-ray-resolved structures, representing configurations which the protease can attain is available~\cite{vondrasek2002hivdb}.
 
 We examined a set of configurations of the HIV-1 protease acquired from a simulation carried out using the RedMD package~\cite{gorecki2009redmd}.
@@ -1509,26 +1779,19 @@ Also, all queries and results are stored on our server.
   
 \chapter{Towards the identification of molecular cogs}
 
-The text of Chapter 3 largely contains material published in the \emph{Journal of Comuptational Chemistry}.
+The text of Chapter 3 largely contains material published in the \emph{Journal of Comuptational Chemistry}%~\cite{dziubinski2015toward}.
 The co-author, Bogdan Lesyng, made the following contributions: ...
 
-\section{Abstract}
+\subsubsection{Motivation and set-up}
+
 Computer simulations of molecular systems allow determination of microscopic interactions between individual atoms or groups of atoms, as well as studies of intramolecular motions. 
-Nevertheless, description of structural transformations at the mezoscopic level and identification of causal relations associated with these transformations, is very difficult.
-Structural and functional properties are related to free energy changes.
+Nevertheless, the identification of causal relations hidden within such transformations is very difficult.
+In the thermodynamic analytical frame, structural and functional properties of molecules are related to their free energy changes.
 Therefore, in order to better understand structural and functional properties of molecular systems, it is required to deepen our knowledge of free energy contributions arising from molecular subsystems in the course of structural transformations.
 
-The method presented in this work quantifies the energetic contribution of each pair of atoms to the total free energy change along a given collective variable.
-Next, with the help of a genetic clustering algorithm, the method proposes a division of the system into two groups of atoms referred to as \emph{molecular cogs}.
+In this chapter, we present a method of quantifying energetic contribution of each pair of atoms to the total free energy change along a given collective variable.
+Next, with the help of a genetic clustering algorithm, we proposes a division of the system into two groups of atoms referred to as \emph{molecular cogs}.
 Atoms which cooperate to push the system forward along a collective variable are referred to as \emph{forward cogs}, and those which work in the opposite direction as \emph{reverse cogs}.
-
-{\color{black}The procedure was tested on several small molecules for which the genetic clustering algorithm successfully found optimal partitionings into molecular cogs.}
-The primary result of the method is a {\color{black}plot} depicting the {\color{black}energetic} contributions of the identified molecular cogs to the total Potential of Mean Force (PMF) change.
-{\color{black}Case-studies presented in this work should help better understand the implications of our approach, and were intended to pave the way to a future, publicly available implementation.}
-
-
-\clearpage
-
 
 \section{Introduction}
 
@@ -1591,7 +1854,7 @@ m_\xi := \left[ \sum_i m_i^{-1} \left(\frac{\partial\xi}{\partial\mathbf{x}_i}\r
 and can be interpreted as inertia of an effective point mass moving along the $\xi$ coordinate.
 
 On the right-hand side of Equation~(\ref{eq:dPMFdKsi}) we have, respectively, energetic and entropic contributions to the free energy change, both expressed as conditional averages, with the collective variable fixed at $\xi^*$.
-In the \emph{Supporting Information} we briefly explain how these averages are estimated \emph{via} constrained Molecular Dynamics (cMD) simulations, and highlight an important limitation of this method.
+In the \emph{Supporting Information} we briefly explain how these averages are estimated \emph{via} constrained Molecular dynamics (cMD) simulations, and highlight an important limitation of this method.
 
 Note, that if we consider the potential energy as a sum of interaction components:
 \begin{equation}
@@ -2142,6 +2405,9 @@ Our future aim is to analyze more complex systems, and to develop a publicly ava
 \chapter{Conclusions}
 
 In this closing chapter we re-iterate the most important findings of the methods presented in Chapters~2 and~3, and propose several refinements to them.
+Both studies exemplify projects in which physical knowledge works side by side with the unsupervised machine learning approaches.
+Physical insight played a predominant role in choosing informative similarity measures used in both applications.
+And although unsupervised machine learning is becoming more and more powerful, without a reliable similarity measure, even the best clustering algorithms are bound to fail.
 
 \section{Dynamic domains}
 
@@ -2150,73 +2416,97 @@ The first one made use of the concept of a \emph{contact} between residues (that
 Thereupon, the second idea was to propose a specific \emph{spectral clustering} algorithm, whose output were clusters corresponding to dynamic domains of a given protein structure.
 In its current implementation, ResiCon requires information about all pairs of configurations to calculate the geometrical variability. 
 
-To analyze MD simulations, ResiCon made use of the Principal Components Analysis (PCA) to select representative configurations. % to reduce the computational complexity of the algorithm constructing the similarity matrix.
-Applying PCA was necessary, because otherwise each pairs of configurations in the trajectory would have to be tracked for the similarity matrix to be constructed.
+The similarity measure derived from geometrical variability was intended to express not only structural shifts, but also (inherently) the strength of physical interactions between pairs of amino-acids.
+This similarity measure was indeed effective (as it lead to compact, high-quality dynamic domains), but as we discussed in Chapter~2, its interpretability proved to be especially useful.
+As we investigated peculiar artifacts in the results of the spectral clustering algorithm, we encountered discontinuities in the clusters.
+Because of the similarity measure's interpretability, these ``artifacts'' lead to valuable observations about the mechanics of structural transitions of the HIV-1 protease.
+
+The spectral clustering method offered a criterion for selecting an optimal number of clusters.
+One should note that popular methods, GeoStaS and PiSQRD, were vulnerable to the slightest changes in parameter values, often yielding absurd clusters, whereas ResiCon was able to discover relevant, rigid domains, or a lack of such.
+
+
+\subsubsection{Potential improvements}
+
+To analyze MD simulations, ResiCon made use of the \emph{principal components analysis} (PCA) to select representative configurations. % to reduce the computational complexity of the algorithm constructing the similarity matrix.
+Applying PCA was fully justified~--~otherwise each pairs of configurations in the trajectory would have to be tracked for the similarity matrix to be constructed.
 %The number of configurations in \emph{any} simulation is too great to allow such a straightforward approach to be feasible.
 However, the PCA relies on linearity assumptions, which in case of structural transitions of biomolecular systems may seem overly optimistic.
-It is possible to amend this obstacle by employing a non-linear algorithm (e.g., NLPCA, which stands for \emph{Non-Linear PCA}), but at prohibitively high computational cost.
+It is possible to amend this obstacle by employing a non-linear algorithm (e.g., NLPCA, which stands for \emph{non-linear PCA}), but at prohibitively high computational cost.
 
 %In order to truly adapt ResiCon to the MD trajectory set-up, one needs to amend the problem of analyzing each pair of configurations.
-In practice, only a few pairs contribute (or, more accurately: \emph{could} have contributed) to the similarity matrix.
+In practice, only a few pairs contribute (or, more precisely: \emph{could} have contributed) to the similarity matrix.
 It would certainly be worthwhile to test a sub-procedure that might substitute PCA by finding relevant pairs of configurations.
-In particular, the Locality-Sensitive Hashing (LSH) algorithm offers this kind of functionality.
+In particular, the \emph{locality-sensitive hashing} (LSH)~\cite{gionis1999similarity} algorithm offers this kind of functionality.
 
 \section{Molecular cogs}
 
-The fundamental assumption of the molecular cogs methodology presented in Chapter~3 was that there are two, \emph{distinct} groups of atoms, cooperating to propel the system forward (or backward) along a given collective variable.
+In Chapter~3 we presented a novel methodology for extracting insight about internal mechanics of small molecules undergoing structural transions.
+This was intended as a ``proof of concept'', with a stronger focus on discovering technical problems and potential pitfalls, rather than on scrutinizing the toy models presented in Chapter~3.
+We have learned that the similarity measure used for identifying molecular cogs leads to reasonable results, and often highlights unexpected properties of the system at hand.
+But~--~perhaps more importantly~--~the similarity measure has a clear interpretation in terms of free energy change associated with a structural transition.
+
+Thus, we got a meaningful similarity measure, for which we needed an adequate clustering method.
+For that purpose, we proposed a custom objective function, for which we found optimal solutions using a genetic clustering algorithm.
+
+\subsubsection{Potential improvements}
+
+The fundamental assumption of the molecular cogs methodology presented in Chapter~3 was that there are two, \emph{distinct} groups of atoms, cooperating to propel the system forwards (or backwards) along a given collective variable.
 However, we concluded that the clustering procedure has its limitations in cases in which the molecular system \emph{as a whole} has a general propensity to move in a certain direction.
 In such cases, the more valuable insight would be the knowledge about which group of atoms plays the dominant role in such an effect.
 
-Instead of using the definitive approach of clustering, one might consider employing a more a general idea in which each element can be a member of a more than just one group.
+Instead of using a definitive approach of clustering, one might consider employing a more a general idea in which each element can be a member of a more than just one group.
 \emph{Community detection} offers such functionality, but also allows for the identification of hierarchical structures.
-With the help from a community detection algorithm, we could, for example, search for groups of atoms with different degrees of contribution to the system's tendency to make a transition.
+With the help of a community detection algorithm, we could, for example, search for groups of atoms with different degrees of contribution to the system's tendency to make a transition.
 
-From a different stand point, the method presented in Chapter~3 employed constrained molecular dynamics (cMD) to estimate local changes in the Helmholtz free energy.
-However, as we noticed in Chapter~3, the cMD has limitations, which would render it ineffective for large systems.
-An alternative sampling technique~--~most notably: the Adaptive Biasing Force (ABF) method~--~could remedy this impediment, but at the cost of a more complicated and time-demanding implementation.
+From a different stand point, the method presented in Chapter~3 employed \emph{constrained molecular dynamics} (cMD) to estimate local changes in the Helmholtz free energy.
+However, as we noticed in Chapter~3, the cMD has limitations, when trying to apply it to larger systems.
+An alternative sampling technique~--~most notably: the \emph{adaptive biasing force} (ABF) method~--~could remedy this impediment, but at the cost of a more complicated and time-demanding implementation.
 We left the ABF-driven improvement for a future molecular cogs identification scheme.
 
-The ABF sub-procedure would also alleviate the problem of estimating entropic contributions of the molecular cogs.
+The ABF sub-procedure would also alleviate the problem of estimating entropic contributions to the molecular cogs.
 Nevertheless, we are not yet certain how the entropic contribution matrix should be partitioned.
 We need to re-evaluate the meaning of molecular cogs altogether, and decide on a strategy that would treat entropic and energetic contributions on an equal footing.
 
 The molecular cogs setting in its current formulation suggests a more subtle analysis of the causality hidden in complex molecular transformations.
 We noticed that by modeling the contributions to the PMF we are close to modeling the kinetics of a transition, as well.
 That is, we can modify our approach to identify contributions of a given subsystem to the so-called \emph{reaction rate constant}.
-For that, we would need to equip our analytical toolbox with yet another method called the Markov State Models (MSM).
+For that, we would need to equip our analytical toolbox with yet another method called the \emph{Markov state models} (MSM)~\cite{sarich2010approximation}.
 Proposed by Frank Noe, the MSM extracts kinetic properties of a system from the PMF.
 It was proven to give reliable estimates of the reaction rate constant for small enzymes, and seems to be an interesting future extension to our molecular cogs methodology.
-We might use MSM to discover the influence of a given subset on the kinetics of a structural transition, as well as identify those subsets whose impact is essential for a given biomolecule's functionality.
+We might use MSM to discover the influence of a given atomic subset on the kinetics of a structural transition, as well as to identify those subsets whose impact is essential for a given biomolecule's functionality.
 
-\section{Conclusion}
+\section{Outcome}
 
-\subsection{The Potential of Mean Force and the collective variable}
+This work presented the difficulties and benefits of adapting unsupervised machine learning to analyzing biophysical data.
+The examples provided in Chapters~2 and~3 showed solutions to three main problems that are likely to be encountered in such investigations:
+\begin{enumerate}
+ \item Choice / definition of a similarity measure;
+ \item Right clustering procedure and the optimal number of clusters;
+ \item Verification of results.
+\end{enumerate}
 
-% Napisz o tym, ze wsp. reakcji jest czesto brana ad hoc, przez co male zmiany potrafia miec gigantyczne znaczenia dla PMFa, co z kolei szkodliwie wplywa na procedury wymierzone 
-%	w efektywne przeczesywanie wartosci wsp. reakcji, w ktorych PMF sie nie stabilizuje.
-% Napisz, ze mozna wiele ugrac, jesli znalazlaby sie metoda z ML, ktorej funkcja celu byloby jak najlepiej rozciagniety PMF ze wzlgedu na jakis collective variable.
-% Jeszcze jeden pomysl: uzycie reinforcement learning w celu eksploracji przestrzeni konfiguracyjnej.
-% Albo inaczej: wykorzystanie reinforcement learningu do znalezienia automatycznego opisu, ktorego jakosc (SCORE) odzwierciedlalby sensownosc uzywania roznych kawalkow
-%	czasteczki w celu okreslenia przebiegu reakcji / przejscia konfiguracyjnego.
+Our similarity measures were strongly based in physical properties of the analyzed systems.
+This was crucial as it brought meaning to the resulting partitionings.
+Next, we chose the appropriate clustering algorithms that worked well with the proposed similarity measures.
+However, we would not be able to judge the quality of the clustering (and, thus, the clustering procedures) without an external method of verification of the results.
+Therefore, these three aspects of an analysis involving unsupervised machine learning are interrelated and cannot be regarded separately.
 
-\subsection{Final comments}
+In this work we have proven, that clustering can be a powerful tool for solving biophysical problems.
+Chapter~2 describes our procedure for identifying \emph{dynamic domains}~--~quasi-rigid parts of proteins that undergo structural changes involving relative movements of these parts.
+In Chapter~3, we presented the concept of \emph{molecular cogs}~--~an innovative approach to describing and discovering molecular subsystems that determine the propensity of a molecule to go through a conformational transition.
+In both these cases, we were able to transform complex biophysical data into simple and meaningful summaries of properties and behaviors of molecular systems.
+We hope that these numerical experiments will serve as guideposts to researchers willing to adapt machine learning in their areas of study.
+
+\section{Final comments}
 
 Complex data produced in biophysical experiments (both, \emph{in silico} and \emph{in vivo}) may often contain valuable information whose extraction demands efficient statistical methods.
-This information can by unexpected, like the ``pivot point'' amino acids revealed by the analysis of the HIV-1 protease trajectory presented in Chapter 2.
-Therefore, it is of paramount importance that such methods:
-\begin{enumerate}
- \item convey easily interpretable
- \item unambiguous and
- \item visually appealing
-\end{enumerate}
-results.
-It is our experience and belief that these three conditions are indispensable for such method to fulfill their purpose.
+Such information can contain unexpected elements, like for example the ``pivot point'' residues revealed by the analysis of the HIV-1 protease trajectory presented in Chapter 2.
+Therefore, it is of paramount importance that such methods should convey easily interpretable, unambiguous, and visually appealing results.
+These three conditions are indispensable for such method to fulfill its purpose.
 
 \begin{appendices}
   
 \chapter{Supplementary Materials for Chapter 2}
-
-
 
 \section{Hierarchical clustering}
 We show in the main article that the spectral clustering algorithm employed by ResiCon leads to high-quality results.
@@ -3025,7 +3315,7 @@ Results presented in the following tables are presented in the same order as in 
 
 
 \chapter{Supplementary Materials for Chapter 3}
-\section{Constrained Molecular Dynamics}\label{sec:appendixA}
+\section{Constrained molecular dynamics}\label{sec:appendixA}
 
 In the blue moon ensemble method~\cite{carter1989constrained}, the conditional expected value of quantity $f$, given $\xi=\xi^*$ can be computed using the \emph{Fixman correction}:
 \begin{equation}\label{eq:fixman}
@@ -3219,7 +3509,7 @@ Note that in all cases the partitionings found by the genetic clustering algorit
 }
 \label{tab:4}
 \end{table}
-}
+  }
 
 {
 \centering
@@ -3241,4 +3531,4 @@ Note that in all cases the partitionings found by the genetic clustering algorit
 % \inputencoding{latin2}
 \printbibliography
 
-\end{document}
+\end{document}	
